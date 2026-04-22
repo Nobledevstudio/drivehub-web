@@ -1,10 +1,10 @@
 import type React from 'react'
-import { assets } from '../../assets/asset.js'
+import { assets } from '../../assets/asset.ts'
 import { Link } from 'react-router-dom'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 mt-20">
+    <footer className="bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
 
         {/* ================= TOP ================= */}
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* ================= BOTTOM ================= */}
-       <div className="grid grid-cols-2 md:grid-cols-4 gap-32 lg:gap-10">
+       <div className="grid grid-cols-2 md:grid-cols-4 gap-24 lg:gap-10">
 
           {/* LEFT: About */}
           <div className="flex flex-col">

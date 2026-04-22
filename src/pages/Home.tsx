@@ -2,6 +2,9 @@ import Navbar from "../components/layout/Navbar"
 import Footer from "../components/layout/Footer"
 import Hero from "../components/Hero"
 import WhyChoose from "../components/WhyChoose"
+import HowItWorks from "../components/HowItWorks"
+import StatsSection from "../components/StatsSection"
+import TestimonialsSection from "../components/Testimonials"
 
 export const Home = () => {
   return (
@@ -15,6 +18,9 @@ export const Home = () => {
         <div className="max-w-7xl mx-auto px-4 py-10">
             <Hero/>
             <WhyChoose/>
+            <HowItWorks/>
+            <StatsSection/>
+            <TestimonialsSection/>
         </div>
       </main>
 

@@ -13,6 +13,7 @@ import easy_booking from './easy_booking.png'
 import nationwide_access from './nationwide_access.png'
 import trusted_sellers from './trusted_sellers.png'
 import verified_listings from './verify_listings.png'
+import user_1 from './user_1.jpg'
 
 export const assets = {
     logo,
@@ -29,6 +30,7 @@ export const assets = {
     easy_booking,
     nationwide_access,
     trusted_sellers,
-    verified_listings
+    verified_listings,
+    user_1
 };
 
