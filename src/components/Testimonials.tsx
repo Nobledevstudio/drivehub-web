@@ -53,7 +53,7 @@ const Stars = ({ rating }: { rating: number }) => {
 
 const TestimonialsSection: React.FC = () => {
   return (
-    <section className="w-full py-24 bg-gray-50">
+    <section className="w-full py-24">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* HEADER */}

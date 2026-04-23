@@ -5,6 +5,7 @@ import WhyChoose from "../components/WhyChoose"
 import HowItWorks from "../components/HowItWorks"
 import StatsSection from "../components/StatsSection"
 import TestimonialsSection from "../components/Testimonials"
+import FeaturedCars from "../components/FeaturedCars"
 
 export const Home = () => {
   return (
@@ -15,9 +16,10 @@ export const Home = () => {
 
       {/* Main Content */}
       <main className="grow">
-        <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto px-4">
             <Hero/>
             <WhyChoose/>
+            <FeaturedCars/>
             <HowItWorks/>
             <StatsSection/>
             <TestimonialsSection/>

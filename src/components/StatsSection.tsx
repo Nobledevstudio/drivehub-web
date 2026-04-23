@@ -65,8 +65,8 @@ const StatCard = ({ icon: Icon, value, label, suffix }: StatItem) => {
 
 const StatsSection: React.FC = () => {
   return (
-    <section className="w-full py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="w-full">
+      <div className="max-w-7xl mx-auto px-4 bg-gray-50 rounded-2xl py-16">
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-16">

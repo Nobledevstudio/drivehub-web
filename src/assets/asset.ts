@@ -1,3 +1,8 @@
+import car_1 from './car_1.png'
+
+
+
+
 import logo from './logo.png';
 import location_icon from './location _icon.png'
 import mail_icon from './mail_icon.png'
@@ -16,6 +21,16 @@ import verified_listings from './verify_listings.png'
 import user_1 from './user_1.jpg'
 
 export const assets = {
+
+      car_1,
+
+
+
+
+
+
+
+
     logo,
     location_icon,
     mail_icon,

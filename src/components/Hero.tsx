@@ -5,7 +5,7 @@ const Hero: React.FC = () => {
   return (
     <section className="w-full">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14 lg:gap-24 py-16">
 
           {/* LEFT CONTENT */}
           <div className="flex flex-col gap-6 text-center lg:text-left">
