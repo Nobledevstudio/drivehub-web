@@ -55,7 +55,7 @@ const StatCard = ({ icon: Icon, value, label, suffix }: StatItem) => {
       </h3>
 
       {/* LABEL */}
-      <p className="text-gray-500 mt-2 text-sm">{label}</p>
+      <p className="text-gray-500 mt-2 text-sm font-sans">{label}</p>
 
       {/* subtle glow line */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-amber-400 scale-x-0 group-hover:scale-x-100 transition origin-left rounded-b-2xl"></div>
@@ -70,10 +70,10 @@ const StatsSection: React.FC = () => {
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">
             Trusted by Thousands Across the Country
           </h2>
-          <p className="text-gray-600 mt-4">
+          <p className="text-gray-600 mt-4 font-sans">
             Real numbers that reflect the growth of DriveHub marketplace
           </p>
         </div>
@@ -86,7 +86,7 @@ const StatsSection: React.FC = () => {
         </div>
 
         {/* TRUST LINE */}
-        <p className="text-center text-sm text-gray-400 mt-10">
+        <p className="text-center text-sm text-gray-400 mt-10 font-sans">
           Secure • Verified Listings • Nationwide Coverage
         </p>
 

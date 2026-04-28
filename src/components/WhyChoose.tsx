@@ -9,11 +9,11 @@ const WhyChoose: React.FC = () => {
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight font-heading">
             Why Choose <span className="text-amber-500">DriveHub</span>?
           </h2>
 
-          <p className="text-gray-600 mt-4 text-base md:text-lg">
+          <p className="text-gray-600 mt-4 text-base md:text-lg font-sans">
             A smarter way to buy and rent cars — built for speed, trust, and convenience.
           </p>
         </div>
@@ -36,12 +36,12 @@ const WhyChoose: React.FC = () => {
               </div>
 
               {/* TITLE */}
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 font-heading">
                 {item.title}
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed font-sans">
                 {item.description}
               </p>
 

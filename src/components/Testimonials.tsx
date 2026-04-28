@@ -58,10 +58,10 @@ const TestimonialsSection: React.FC = () => {
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-heading">
             What Our Users Say
           </h2>
-          <p className="text-gray-600 mt-4">
+          <p className="text-gray-600 mt-4 font-sans">
             Real feedback from people using DriveHub every day
           </p>
         </div>
@@ -81,7 +81,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
 
               {/* COMMENT */}
-              <p className="text-gray-600 text-sm leading-relaxed mt-4">
+              <p className="text-gray-600 text-sm leading-relaxed mt-4 font-sans">
                 {item.comment}
               </p>
 
@@ -103,10 +103,10 @@ const TestimonialsSection: React.FC = () => {
 
                 {/* INFO */}
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-900">
+                  <h4 className="text-sm font-semibold text-gray-900 font-sans">
                     {item.name}
                   </h4>
-                  <p className="text-xs text-gray-500">{item.role}</p>
+                  <p className="text-xs text-gray-500 font-sans">{item.role}</p>
                 </div>
 
               </div>

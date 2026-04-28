@@ -36,16 +36,16 @@ const steps: StepItem[] = [
 
 const HowItWorks: React.FC = () => {
   return (
-    <section className="w-full py-24 lg:py-15 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="w-full py-12 lg:py-15">
+      <div className="max-w-6xl mx-auto px-4 bg-gray-50 rounded-2xl py-12">
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-24">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight font-heading">
             How <span className="text-amber-500">DriveHub</span> Works
           </h2>
 
-          <p className="text-gray-600 mt-5 text-lg">
+          <p className="text-gray-600 mt-5 text-lg font-sans">
             Renting or buying a car has never been easier. Follow these simple steps to get started.
           </p>
         </div>
@@ -80,19 +80,19 @@ const HowItWorks: React.FC = () => {
                   </div>
 
                   {/* TITLE */}
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-heading">
                     {step.title}
                   </h3>
 
                   {/* DESCRIPTION */}
-                  <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                  <p className="text-gray-600 leading-relaxed text-base md:text-lg font-sans">
                     {step.description}
                   </p>
                 </div>
 
                 {/* VISUAL */}
                 <div className="flex-1">
-                  <div className="w-full h-72 md:h-80 bg-gray-100 rounded-3xl flex items-center justify-center text-gray-400 text-sm">
+                  <div className="w-full h-72 md:h-80 bg-gray-100 rounded-3xl flex items-center justify-center text-gray-400 text-sm font-sans">
                     {/* Replace with real UI screenshot */}
                     Product Preview
                   </div>
@@ -105,15 +105,15 @@ const HowItWorks: React.FC = () => {
 
         {/* CTA */}
         <div className="text-center mt-28">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 font-heading">
             Ready to get started?
           </h3>
 
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 font-sans">
             Browse available cars and experience a smarter way to rent or buy.
           </p>
 
-          <button className="bg-amber-500 hover:bg-amber-600 text-white px-10 py-4 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg">
+          <button className="bg-amber-500 hover:bg-amber-600 text-white px-10 py-4 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
             Browse Cars
           </button>
         </div>

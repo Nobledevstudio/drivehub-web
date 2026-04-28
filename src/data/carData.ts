@@ -18,6 +18,7 @@ export interface CarItem {
   transmission: 'automatic' | 'manual'
   seats: number
   dealerId: number
+  isHotDeal?: boolean
 }
 
 export const carData: CarItem[] = [
@@ -67,7 +68,8 @@ export const carData: CarItem[] = [
         fuel: 'petrol',
         transmission: 'automatic',
         seats: 5,
-        dealerId: 1
+        dealerId: 1,
+        isHotDeal: true
       },
       {
         id: 4,
@@ -83,6 +85,41 @@ export const carData: CarItem[] = [
         fuel: 'petrol',
         transmission: 'automatic',
         seats: 5,
-        dealerId: 1
+        dealerId: 1,
+        isHotDeal: true
+      },
+      {
+        id: 5,
+        name: 'Chevrolet Malibu',
+        brand: 'Chevrolet',
+        location: 'Lagos',
+        image: assets.car_1,
+        pricing: {
+          rent: 85000
+        },
+        rating: 4.5,
+        year: 2020,
+        fuel: 'petrol',
+        transmission: 'automatic',
+        seats: 5,
+        dealerId: 1,
+        isHotDeal: true
+      },
+      {
+        id: 6,
+        name: 'Hyundai Elantra',
+        brand: 'Hyundai',
+        location: 'Lagos',
+        image: assets.car_1,
+        pricing: {
+          rent: 85000
+        },
+        rating: 4.5,
+        year: 2020,
+        fuel: 'petrol',
+        transmission: 'automatic',
+        seats: 5,
+        dealerId: 1,
+        isHotDeal: true
       }
 ]

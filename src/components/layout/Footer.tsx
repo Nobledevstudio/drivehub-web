@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
               <img src={assets.location_icon} className="w-5 h-5" alt="location" />
             </div>
             <div>
-              <h2 className="font-semibold">Address</h2>
-              <p className="text-sm font-medium">Oxford, Ave 1234, Ikoyi Lagos</p>
+              <h2 className="font-semibold font-heading">Address</h2>
+              <p className="text-sm font-medium font-sans">Oxford, Ave 1234, Ikoyi Lagos</p>
             </div>
           </div>
 
@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
               <img src={assets.telephone_icon} className="w-5 h-5" alt="phone" />
             </div>
             <div>
-              <h2 className="font-semibold">Phone</h2>
-              <p className="text-sm font-medium">+23434667884</p>
+              <h2 className="font-semibold font-heading">Phone</h2>
+              <p className="text-sm font-medium font-sans">+23434667884</p>
             </div>
           </div>
 
@@ -39,21 +39,20 @@ const Footer: React.FC = () => {
               <img src={assets.mail_icon} className="w-5 h-5" alt="email" />
             </div>
             <div>
-              <h2 className="font-semibold">Email</h2>
-              <p className="text-sm font-medium">info@drivehub.com</p>
+              <h2 className="font-semibold font-heading">Email</h2>
+              <p className="text-sm font-medium font-sans">info@drivehub.com</p>
             </div>
           </div>
 
         </div>
 
         {/* ================= BOTTOM ================= */}
-       <div className="grid grid-cols-2 md:grid-cols-4 gap-24 lg:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-24 lg:gap-10">
 
           {/* LEFT: About */}
           <div className="flex flex-col">
-            <p className="leading-relaxed text-sm text-gray-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Fugiat rem obcaecati labore natus minus at repellendus optio.
+            <p className="leading-relaxed text-sm text-gray-700 font-sans">
+           DriveHub connects you to verified cars for rent and purchase across Nigeria — making car transactions simple, fast, and secure.
             </p>
 
             <div className="flex gap-3 mt-5">
@@ -63,49 +62,49 @@ const Footer: React.FC = () => {
               <img src={assets.youtube} className="w-6 h-6" />
             </div>
           </div>
-        
 
-            {/* Quick Links */}
-            <div className='lg:ml-32'>
-              <h1 className="font-semibold mb-3">Quick Links</h1>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/services">Services</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-                <li><Link to="/terms">Terms of Service</Link></li>
-                <li><Link to="/faq">FAQ</Link></li>
-                <li><Link to="/careers">Blog</Link></li>
-              </ul>
-            </div>
 
-            {/* Vehicles */}
+          {/* Quick Links */}
           <div className='lg:ml-32'>
-              <h1 className="font-semibold mb-3">Vehicles</h1>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/about">Toyota</Link></li>
-                <li><Link to="/services">Sedan</Link></li>
-                <li><Link to="/contact">BMW</Link></li>
-                <li><Link to="/terms">SUV</Link></li>
-                <li><Link to="/faq">Hatchback</Link></li>
-              </ul>
+            <h1 className="font-semibold mb-3 font-heading">Quick Links</h1>
+            <ul className="space-y-2 text-sm font-sans">
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+              <li><Link to="/faq">FAQ</Link></li>
+              <li><Link to="/careers">Blog</Link></li>
+            </ul>
+          </div>
+
+          {/* Vehicles */}
+          <div className='lg:ml-32'>
+            <h1 className="font-semibold mb-3 font-heading">Vehicles</h1>
+            <ul className="space-y-2 text-sm font-sans">
+              <li><Link to="/about">Toyota</Link></li>
+              <li><Link to="/services">Sedan</Link></li>
+              <li><Link to="/contact">BMW</Link></li>
+              <li><Link to="/terms">SUV</Link></li>
+              <li><Link to="/faq">Hatchback</Link></li>
+            </ul>
+          </div>
+
+          {/* App */}
+          <div className="flex flex-col lg:ml-40">
+            <h1 className="font-semibold mb-3 font-heading">Download App</h1>
+
+            <div className="flex flex-col gap-3">
+              <img src={assets.appstore_icon} className="w-32" />
+              <img src={assets.playstore_icon} className="w-32" />
             </div>
+          </div>
 
-            {/* App */}
-            <div className="flex flex-col lg:ml-40">
-              <h1 className="font-semibold mb-3">Download App</h1>
 
-              <div className="flex flex-col gap-3">
-                <img src={assets.appstore_icon} className="w-32" />
-                <img src={assets.playstore_icon} className="w-32" />
-              </div>
-            </div>
-
-      
 
         </div>
 
         {/* ================= COPYRIGHT ================= */}
-        <div className="border-t mt-12 pt-6 text-center text-sm text-gray-500">
+        <div className="border-t mt-12 pt-6 text-center text-sm text-gray-500 font-sans">
           © {new Date().getFullYear()} DriveHub. All rights reserved.
         </div>
 
