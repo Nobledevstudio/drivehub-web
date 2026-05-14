@@ -1,4 +1,4 @@
-import { ListRestart } from "lucide-react"
+import { RotateCcw, X } from "lucide-react"
 
 type SidebarProps = {
     open: boolean
@@ -7,28 +7,36 @@ type SidebarProps = {
 
 
 
-const Sidebar = ({ open }: SidebarProps) => {
+const Sidebar = ({ open, setOpen }: SidebarProps) => {
     return (
-        <div className={`bg-white border border-gray-100 rounded-xl p-4 space-y-6 ${open ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out`}>
+        <div className={` fixed lg:static top-0 left-0 h-screen lg:h-auto w-[85%] sm:w-100 lg:w-auto z-50 overflow-y-auto bg-white border border-gray-100 rounded-none lg:rounded-xl p-4 space-y-6 transform transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 `}>
+            {/* Mobile close */}
+
+            <div className="flex justify-end lg:hidden">
+                <button onClick={() => setOpen(false)}>
+                    <X className="w-6 h-6" />
+                </button>
+            </div>
 
             <div className="flex items-center gap-2 justify-between">
                 <h2 className="text-lg font-semibold">Filters by</h2>
-                <div className="flex gap-2">
-                    <p className="font-sans text-md">reset</p>
-                    <ListRestart className="w-5 h-5 text-gray-500" />
+                <div className="flex gap-2 cursor-pointer">
+                    <p className="font-sans text-md">Reset</p>
+                    <RotateCcw className="w-4 h-4 text-gray-500" />
                 </div>
             </div>
 
-            {/* Rent or Buy */}
-            <div className="flex items-center justify-between">
-                <button className="bg-white border border-amber-300 hover:bg-gray-300 text-gray-800 px-10 py-2 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
+            <div className="flex items-center gap-3">
+
+                <button className="flex-1 bg-white border border-amber-300 hover:bg-gray-300 text-gray-800 py-2 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
                     Buy
                 </button>
-                <button className="bg-white border border-gray-200 text-gray-800 px-10 py-3 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
+
+                <button className="flex-1 bg-white border border-gray-200 text-gray-800 py-2 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
                     Rent
                 </button>
-            </div>
 
+            </div>
             {/* PRICE FILTER */}
             <div>
                 <p className="text-sm font-medium mb-2">Price Range ₦</p>
@@ -96,8 +104,8 @@ const Sidebar = ({ open }: SidebarProps) => {
                     </select>
                 </div>
             </div>
-           {/* Locations */}
-           <div>
+            {/* Locations */}
+            <div>
                 <p className="text-sm font-medium mb-2">Location</p>
                 <div className="space-y-1">
                     <select className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-400">

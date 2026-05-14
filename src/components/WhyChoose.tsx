@@ -4,7 +4,7 @@ import { WhyChooseUs } from "../data/WhyChooseUsData"
 
 const WhyChoose: React.FC = () => {
   return (
-    <section className="w-full py-20 lg:py-28">
+    <section className="w-full py-20 lg:py-28 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 bg-gray-50 rounded-2xl py-16">
 
         {/* HEADER */}

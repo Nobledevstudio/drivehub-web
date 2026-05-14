@@ -8,7 +8,7 @@ import HotDeals from "../components/HotDeals"
 
 export const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen over-flow-x-hidden">
       <main className="grow">
         <div className="max-w-7xl mx-auto px-4">
             <Hero/>

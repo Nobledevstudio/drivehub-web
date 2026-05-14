@@ -2,7 +2,8 @@ import car_1 from './car_1.png'
 
 
 
-
+import about_img from './about_img.png'
+import our_story from './our_story.jpg'
 import logo from './logo.png';
 import location_icon from './location _icon.png'
 import mail_icon from './mail_icon.png'
@@ -32,6 +33,8 @@ export const assets = {
 
 
     logo,
+    about_img,
+    our_story,
     location_icon,
     mail_icon,
     telephone_icon,
