@@ -22,7 +22,7 @@ const AuthLayout = ({ left, right }: authLayoutProps) => {
       </div>
 
       {/* RIGHT */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center px-4 py-10 overflow-y-auto">
         {right}
       </div>
 
