@@ -11,6 +11,7 @@ interface helpProps {
 }
 
 interface faqProps {
+  id: number,
   question: string,
   answer: string
 }
@@ -18,7 +19,7 @@ interface faqProps {
 
 const Contact = () => {
 
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
 
   const help: helpProps[] = [
     {
@@ -47,30 +48,34 @@ const Contact = () => {
 
   const faqs: faqProps[] = [
     {
+      id: 1,
       question: "How do I list my car on DriveHub?",
       answer:
         "Create a dealer account, verify your details, and upload your vehicle information."
     },
     {
+      id: 2,
       question: "Does DriveHub verify dealers?",
       answer:
         "Yes. All dealer accounts go through identity and business verification."
     },
     {
+      id: 3,
       question: "Can I finance a vehicle on DriveHub?",
       answer:
         "Yes. Financing options are available on selected listings."
     },
     {
+      id: 4,
       question: "How long does support take?",
       answer:
         "Our support team usually responds within 24 hours."
     }
   ];
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10">
+    <section className="max-w-7xl mx-auto px-4 py-2">
       {/* Conact Hero */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14 lg:gap-24 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14 lg:gap-24 py-4">
         {/* Left Content */}
         <div className="flex flex-col gap-6 text-center lg:text-left">
           {/* badge */}
@@ -105,7 +110,7 @@ const Contact = () => {
       </div>
 
       {/* Help */}
-
+      
       <div className="space-y-2">
         <h2 className="text-2xl sm:text-3xl text-gray-900 font-bold">How can we help?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -259,7 +264,7 @@ const Contact = () => {
       </div>
 
       {/* FAQ */}
-      <div className="mt-16s">
+      <div className="mt-16">
 
         <h2 className="text-2xl sm:text-3xl font-bold">
           Frequently Asked Questions
@@ -267,27 +272,28 @@ const Contact = () => {
         <hr className="my-4 w-16 h-1 bg-amber-400 border-0 rounded-full" />
 
         <div className="space-y-4 mt-8">
-          <div className="grid md:grid-cols-2 gap-4">
-            {faqs.map((item, index) => (
-              <div key={index} className="border border-gray-300 rounded-lg p-4">
+          <div className="grid md:grid-cols-2 gap-4 items-start">
+            {faqs.map((item) => (
+              <div key={item.id} className="border border-gray-300 rounded-lg p-4">
 
                 <button
                   className="flex items-center justify-between w-full text-left"
-                  onClick={() => setOpen(open === index ? null : index)}
+                  onClick={() => setOpen(open === item.id ? null : item.id)}
                 >
                   <h3 className="font-semibold text-gray-900">
                     {item.question}
                   </h3>
 
                   <ChevronDown
-                    className={`transition-transform ${open === index ? "rotate-180" : ""
+                    className={`transition-transform ${open === item.id ? "rotate-180" : ""
                       }`}
                     size={20}
                   />
                 </button>
 
-                {open === index && (
+                {open === item.id && (
                   <div className="mt-4 text-gray-600">
+                    <hr className="my-2 text-gray-200" />
                     <p>{item.answer}</p>
                   </div>
                 )}

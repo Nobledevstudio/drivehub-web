@@ -16,10 +16,9 @@ const navItems: NavItem[] = [
 
 const Navbar: React.FC = () => {
 
-     const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(false)
 
-     
-     
+
 
 
     return (
@@ -37,23 +36,27 @@ const Navbar: React.FC = () => {
                     ))}
                 </div>
                 <div className="hidden md:flex items-center gap-3">
-                    <button className="bg-primary px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-primaryDark transition cursor-pointer font-sans">
+                    <Link to="/login"
+                        className="bg-primary px-5 py-2 rounded-full text-sm font-medium text-white hover:bg-primaryDark transition cursor-pointer font-sans">
                         Login
-                    </button>
+                    </Link>
+
                     <span className="text-gray-400">|</span>
-                    <button className="px-5 py-2 rounded-full text-sm font-medium text-primary border border-primary hover:bg-primary-dark hover:text-white transition cursor-pointer font-sans">
+
+                    <Link  to="/sign-up"
+                        className="px-5 py-2 rounded-full text-sm font-medium text-primary border border-primary hover:bg-primary-dark hover:text-white transition cursor-pointer font-sans" >
                         Sign Up
-                    </button>
+                    </Link>
                 </div>
                 <div className="bg-primary p-2 rounded-full flex items-center justify-center md:hidden cursor-pointer">
-                    <MenuIcon className="w-6 h-6 text-white" onClick={()=> setOpenMenu(true)} />
+                    <MenuIcon className="w-6 h-6 text-white" onClick={() => setOpenMenu(true)} />
                 </div>
             </div>
             {/* Mobile Menu (hidden for now) */}
-           <div className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 transform transition-transform duration-300 ease-in-out z-10 ${openMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 transform transition-transform duration-300 ease-in-out z-10 ${openMenu ? 'translate-x-0' : 'translate-x-full'}`}>
 
                 <div className="flex justify-end">
-                    <X className="w-6 h-6 text-black cursor-pointer" onClick={()=> setOpenMenu(false)} />
+                    <X className="w-6 h-6 text-black cursor-pointer" onClick={() => setOpenMenu(false)} />
                 </div>
 
                 <div className="flex flex-col gap-6 mt-10 font-sans">
@@ -65,13 +68,18 @@ const Navbar: React.FC = () => {
                     ))}
 
                     <div className="mt-6 flex flex-col gap-3">
-                        <button className="bg-primary py-2 rounded-full text-white">
-                            Login
-                        </button>
 
-                        <button className="border border-primary py-2 rounded-full text-primary">
+                        <Link to="/login"
+                            className="bg-primary py-2 px-4 rounded-full text-white inline-block text-center"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/sign-up"
+                            className="border border-primary py-2 px-4 rounded-full text-primary inline-block text-center"
+                        >
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
 
                 </div>
