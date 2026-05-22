@@ -1,6 +1,7 @@
 import { EyeIcon, EyeOffIcon, LockIcon, MailIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { assets } from "../../assets/asset";
 
 const LoginForm = () => {
 
@@ -11,6 +12,16 @@ const LoginForm = () => {
   return (
     <div className="w-full max-w-sm mx-auto px-4 sm:px-0">
       {/* Header */}
+           <div className="md:hidden flex items-center justify-start mb-4">
+              <Link to="/">
+                <img
+                  className="w-40 z-10"
+                  src={assets.logo}
+                  alt="Drive Hub Logo"
+                />
+              </Link>
+      
+            </div>
       <h1 className="text-3xl font-semibold">Welcome Back</h1>
       <p className="text-gray-600 text-sm mt-1">
         Sign in to your DriveHub account

@@ -2,14 +2,25 @@ import { Link } from "react-router-dom"
 import RoleSelect from "../RoleSelect"
 import { EyeIcon, EyeOffIcon, LockIcon, MailIcon, User } from "lucide-react"
 import { useState } from "react";
+import { assets } from "../../assets/asset";
 
 const SignUpForm = () => {
 
-    const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <div className="w-full max-w-sm mx-auto px-4 sm:px-0">
       {/* Header */}
+      <div className="md:hidden flex items-center justify-center mb-4">
+        <Link to="/">
+          <img
+            className="w-40 z-10"
+            src={assets.logo}
+            alt="Drive Hub Logo"
+          />
+        </Link>
+
+      </div>
       <h1 className="text-3xl font-semibold">Create Your Account</h1>
       <p className="text-gray-600 text-sm mt-1">
         Join DriveHub in a few easy steps
@@ -18,7 +29,7 @@ const SignUpForm = () => {
       {/* Form */}
       <form className="mt-4 space-y-2">
         {/* Full Name */}
-         <div className="flex flex-col mt-1.5">
+        <div className="flex flex-col mt-1.5">
           <label htmlFor="email" className="text-sm font-medium">
             FullName
           </label>
