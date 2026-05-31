@@ -20,6 +20,8 @@ import nationwide_access from './nationwide_access.png'
 import trusted_sellers from './trusted_sellers.png'
 import verified_listings from './verify_listings.png'
 import user_1 from './user_1.jpg'
+import visa_mastercard from './visa_mastercard.jpg'
+
 
 export const assets = {
 
@@ -49,6 +51,8 @@ export const assets = {
     nationwide_access,
     trusted_sellers,
     verified_listings,
-    user_1
+    user_1,
+    visa_mastercard
+    
 };
 
