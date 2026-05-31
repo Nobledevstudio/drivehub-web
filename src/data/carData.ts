@@ -18,6 +18,7 @@ export interface CarItem {
   transmission: 'automatic' | 'manual'
   seats: number
   dealerId: number
+  dealer: string
   isHotDeal?: boolean,
   color: string
   airconditioning?: boolean
@@ -39,6 +40,7 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
+    dealer: "Ola Motors",
     color: "black",
     airconditioning: true,
     description:
@@ -61,6 +63,7 @@ export const carData: CarItem[] = [
     seats: 5,
     dealerId: 1,
     color: "black",
+     dealer: "Ola Motors",
     airconditioning: true,
     description:
       "Clean Honda Civic with sporty styling, responsive engine, premium interior, smooth handling, and modern safety features. Perfect for executive and daily drives."
@@ -81,6 +84,7 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
+     dealer: "Ola Motors",
     isHotDeal: true,
     airconditioning: true,
     color: "black",
@@ -103,6 +107,7 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
+    dealer: "Ola Motors",
     isHotDeal: true,
     color: "black",
     airconditioning: true,
@@ -125,6 +130,7 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
+    dealer: "Ola Motors",
     isHotDeal: true,
     color: "black",
     airconditioning: true,
@@ -147,6 +153,7 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
+    dealer: "Ola Motors",
     isHotDeal: true,
     color: "black",
     airconditioning: true,
