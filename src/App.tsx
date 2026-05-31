@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import Listings from "./pages/Listings";
-import CarDetails from "./components/CarDetails";
+import CarDetails from "./pages/CarDetails";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/auth/Login";
@@ -10,6 +10,9 @@ import SignUp from "./pages/auth/SignUp";
 
 import AuthLayouts from "./layouts/AuthLayouts";
 import MainLayouts from "./layouts/MainLayouts";
+import CarBooking from "./pages/CarBooking";
+import CarInspection from "./pages/CarInspection";
+import CheckOutPage from "./pages/CheckOutPage";
 
 const App = () => {
   return (
@@ -22,6 +25,9 @@ const App = () => {
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/car/:id" element={<CarDetails />} />
+        <Route path="/car/:id/book" element={<CarBooking />} />
+        <Route path="/car/:id/inspection" element={<CarInspection />} />
+        <Route path="/car/:id/book/checkout" element={<CheckOutPage />} />
       </Route>
 
       {/* AUTH LAYOUT */}
