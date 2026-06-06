@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom"
 import { carData } from "../data/carData";
-import { ChevronLeft, ChevronRight, Heart, Palette, Calendar, Fuel, Settings, Users, Snowflake, MapPin, } from "lucide-react";
+import { Palette, Calendar, Fuel, Settings, Users, Snowflake, MapPin, } from "lucide-react";
 import Car from "../components/Car";
+import CarImageGallery from "../components/CarImageGallery";
 
 
 const CarDetails = () => {
@@ -12,7 +13,7 @@ const CarDetails = () => {
 
     const relatedCars = carData.filter((item) => item.brand === car?.brand && item.id !== car.id)
 
-  //console.log(relatedCars);
+    //console.log(relatedCars);
 
 
     if (!car) {
@@ -28,67 +29,7 @@ const CarDetails = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                <div className="space-y-4">
-
-                    {/* IMAGE WRAPPER */}
-                    <div className="relative border border-gray-200 rounded-xl overflow-hidden">
-
-                        {/* Badges */}
-                        <div className="absolute top-3 left-3 flex gap-2 z-10">
-                            {car.pricing?.rent && (
-                                <span className="bg-amber-500 text-white text-xs px-3 py-1 rounded-full font-medium">
-                                    Rent
-                                </span>
-                            )}
-
-                            {car.pricing?.buy && (
-                                <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-medium">
-                                    Sale
-                                </span>
-                            )}
-                        </div>
-
-                        {/* Wishlist */}
-                        <div className="absolute top-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition z-10">
-                            <Heart className="w-5 h-5 text-gray-600 hover:text-red-500" />
-                        </div>
-
-                        {/* Left Arrow */}
-                        <ChevronLeft
-                            size={45}
-                            className="absolute top-1/2 left-3 -translate-y-1/2 text-black bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 hover:shadow-md transition z-10"
-                        />
-
-                        {/* Right Arrow */}
-                        <ChevronRight
-                            size={45}
-                            className="absolute top-1/2 right-3 -translate-y-1/2 text-black bg-white p-2 rounded-full cursor-pointer hover:bg-gray-200 hover:shadow-md transition z-10"
-                        />
-
-                        {/* Main Image */}
-                        <img
-                            className="w-full h-full object-cover"
-                            src={car.image}
-                            alt="Main car"
-                        />
-
-                    </div>
-
-                    {/* THUMBNAILS */}
-                    <div className="grid grid-cols-4 gap-2">
-
-                        {[1, 2, 3, 4].map((_, i) => (
-                            <img
-                                key={i}
-                                className="w-full aspect-video object-cover rounded-md border border-gray-200 cursor-pointer hover:opacity-80 transition"
-                                src={car.image}
-                                alt={`Thumbnail ${i}`}
-                            />
-                        ))}
-
-                    </div>
-
-                </div>
+                <CarImageGallery car={car} />
 
                 {/* RIGHT: DETAILS */}
                 <div className="space-y-6">
@@ -198,16 +139,15 @@ const CarDetails = () => {
                     {/* ACTION BUTTONS */}
                     <div className="flex gap-3 pt-4">
 
-                   
-                            {/* Primary Action */}
-                            <Link className="flex-1 text-center bg-amber-500 text-white py-3 rounded-md hover:bg-amber-600 transition cursor-pointer" to={isRent ? `/car/${id}/book` : `/car/${id}/inspection`}>
-                                {isRent ? "Book Now" : "Request Inspection"}
-                            </Link>
-                       
-                        {/* Secondary Action */}
-                        <button className="flex-1 border border-gray-300 py-3 rounded-md hover:bg-gray-100 transition cursor-pointer">
-                            Contact Seller
-                        </button>
+                        {/* Primary Action */}
+                        <Link className="flex-1 text-center bg-amber-500 text-white py-3 rounded-md hover:bg-amber-600 transition cursor-pointer" to={isRent ? `/car/${id}/book` : `/car/${id}/inspection`}>
+                            {isRent ? "Book Now" : "Request Inspection"}
+                        </Link>
+
+                         {/* Secondary Action */}
+                        <Link className="flex-1 border text-center border-gray-300 py-3 rounded-md hover:bg-gray-100 transition cursor-pointer" to={`/car/${id}/contact-dealer`}>
+                            Contact Dealer
+                        </Link>
 
                     </div>
 

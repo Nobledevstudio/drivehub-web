@@ -1,29 +1,27 @@
 import { MapPin, Star, Heart } from "lucide-react"
 import { useNavigate, Link } from "react-router-dom"
 
-interface CarProps {
-    car: {
-        id: number,
-        name: string,
-        brand: string,
-        location: string,
-        pricing: {
-            rent?: number,
-            buy?: number
-        },
-        image: string,
-        rating: number,
-        year: number,
-        fuel: string,
-        transmission: string,
-        seats: number,
-        dealerId: number
-        isHotDeal?: boolean,
-        color?: string
-    }
+export interface Car {
+  id: number;
+  name: string;
+  brand: string;
+  location: string;
+  pricing: {
+    rent?: number;
+    buy?: number;
+  };
+  image: string;
+  rating: number;
+  year: number;
+  fuel: string;
+  transmission: string;
+  seats: number;
+  dealerId: number;
+  isHotDeal?: boolean;
+  color?: string;
 }
 
-const Car = ({ car }: CarProps) => {
+const Car = ({ car }: { car: Car }) => {
 
     const navigate = useNavigate();
 

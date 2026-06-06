@@ -13,6 +13,7 @@ import MainLayouts from "./layouts/MainLayouts";
 import CarBooking from "./pages/CarBooking";
 import CarInspection from "./pages/CarInspection";
 import CheckOutPage from "./pages/CheckOutPage";
+import ContactDealer from "./pages/ContactDealer";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/car/:id/book" element={<CarBooking />} />
         <Route path="/car/:id/inspection" element={<CarInspection />} />
         <Route path="/car/:id/book/checkout" element={<CheckOutPage />} />
+        <Route path="/car/:id/contact-dealer" element={<ContactDealer />} />
       </Route>
 
       {/* AUTH LAYOUT */}
