@@ -69,7 +69,7 @@ const CheckOutLeft = () => {
                     ))}
 
                     <div className="flex justify-start items-center gap-2 px-2 py-4 border border-gray-200 rounded-lg">
-                        <ShieldCheckIcon className="w-8 h-8"/>
+                        <ShieldCheckIcon className="w-8 h-8" />
                         <div>
                             <h2 className="font-semibold">Secure payment</h2>
                             <p className="text-sm text-gray-700">Your payment information is encrypted and secure</p>
@@ -87,8 +87,13 @@ const CheckOutLeft = () => {
                             ? paymentstats[paymentStatCard].buttonText
                             : "Select a payment method"}
                     </button>
-                       <p className="flex gap-2 items-center justify-center text-xs text-gray-700 my-5.5"><ShieldCheck className="w-4 h-4"/> 
-                       By proceeeding you agree to our<span className="text-amber-500">Terms & Conditions</span> and <span className="text-amber-500">Privacy Policy</span></p>
+                    <p className="text-xs text-center mt-4 text-gray-600 flex flex-wrap justify-center gap-1 py-4">
+                        <ShieldCheck className="w-4 h-4" />
+                        By proceeding you agree to
+                        <span className="text-amber-500">Terms & Conditions</span>
+                        and
+                        <span className="text-amber-500">Privacy Policy</span>
+                    </p>
                 </div>
             </div>
         </div>
