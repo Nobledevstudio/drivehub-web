@@ -14,31 +14,68 @@ import CarBooking from "./pages/CarBooking";
 import CarInspection from "./pages/CarInspection";
 import CheckOutPage from "./pages/CheckOutPage";
 import ContactDealer from "./pages/ContactDealer";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import DealerDashboard from "./pages/dealer/DealerDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import { Toaster } from "react-hot-toast";
+import CustomerDashboard from "./pages/customer/CustomerDashboard";
+
 
 const App = () => {
   return (
-    <Routes>
+    <>
+     
+      <Toaster  position="top-right"/>
+      <Routes>
 
-      {/* MAIN LAYOUT */}
-      <Route element={<MainLayouts />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/listings" element={<Listings />} />
-        <Route path="/about-us" element={<About />} />
-        <Route path="/contact-us" element={<Contact />} />
-        <Route path="/car/:id" element={<CarDetails />} />
-        <Route path="/car/:id/book" element={<CarBooking />} />
-        <Route path="/car/:id/inspection" element={<CarInspection />} />
-        <Route path="/car/:id/book/checkout" element={<CheckOutPage />} />
-        <Route path="/car/:id/contact-dealer" element={<ContactDealer />} />
-      </Route>
+        {/* MAIN LAYOUT */}
+        <Route element={<MainLayouts />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/listings" element={<Listings />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/car/:id" element={<CarDetails />} />
+          <Route path="/car/:id/book" element={<CarBooking />} />
+          <Route path="/car/:id/inspection" element={<CarInspection />} />
+          <Route path="/car/:id/book/checkout" element={<CheckOutPage />} />
+          <Route path="/car/:id/contact-dealer" element={<ContactDealer />} />
+        </Route>
 
-      {/* AUTH LAYOUT */}
-      <Route element={<AuthLayouts />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Route>
+        {/* AUTH LAYOUT */}
+        <Route element={<AuthLayouts />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Route>
 
-    </Routes>
+
+        {/* Protected Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/dealer/dashboard" element={
+          <ProtectedRoute allowedRoles={["dealer"]}>
+            <DealerDashboard />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+          path="/customer/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["customer"]}>
+              <CustomerDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+
+      </Routes>
+    </>
+
   );
 };
 
