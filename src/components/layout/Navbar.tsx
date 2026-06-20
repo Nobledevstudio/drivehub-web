@@ -61,10 +61,10 @@ const Navbar: React.FC = () => {
                     <X className="w-6 h-6 text-black cursor-pointer" onClick={() => setOpenMenu(false)} />
                 </div>
 
-                <div className="flex flex-col gap-6 mt-10 font-sans">
+                <div onClick={()=>setOpenMenu(false)} className="flex flex-col gap-6 mt-10 font-sans">
 
                     {navItems.map((item) => (
-                        <Link key={item.path} to={item.path} className="text-lg font-medium">
+                        <Link  key={item.path} to={item.path} className="text-lg font-medium">
                             {item.name}
                         </Link>
                     ))}
