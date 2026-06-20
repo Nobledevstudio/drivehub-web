@@ -1,7 +1,12 @@
-import { useState } from "react";
 
-const RoleSelect = () => {
-  const [role, setRole] = useState<"customer" | "dealer" | "">("");
+
+type RoleSelectProps = {
+  role: "customer" | "dealer" | "";
+  setRole: (role: "customer" | "dealer") => void;
+};
+
+const RoleSelect = ({role, setRole}: RoleSelectProps ) => {
+  
 
   return (
     <div className="space-y-3 mt-3">
@@ -41,7 +46,8 @@ const RoleSelect = () => {
           checked={role === "dealer"}
           onChange={() => setRole("dealer")}
           className="accent-amber-500"
-        />
+         
+         />
       </label>
         </div>
     </div>

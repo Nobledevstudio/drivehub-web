@@ -17,14 +17,17 @@ import ContactDealer from "./pages/ContactDealer";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import DealerDashboard from "./pages/dealer/DealerDashboard";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import { Toaster } from "react-hot-toast";
 import CustomerDashboard from "./pages/customer/CustomerDashboard";
+import { Toaster } from "react-hot-toast";
+import PendingApproval from "./pages/PendingApproval";
+import ScrollToTop from "./components/ScrollToTop";
+
 
 
 const App = () => {
   return (
     <>
-     
+      <ScrollToTop/>
       <Toaster  position="top-right"/>
       <Routes>
 
@@ -72,6 +75,7 @@ const App = () => {
           }
         />
 
+       <Route path="/pending-approval" element={<PendingApproval/>} ></Route>
 
       </Routes>
     </>
