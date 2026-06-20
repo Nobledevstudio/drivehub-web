@@ -1,5 +1,5 @@
 import { MapPin, Star, Heart } from "lucide-react"
-import { useNavigate, Link } from "react-router-dom"
+import {  Link } from "react-router-dom"
 
 export interface Car {
   id: number;
@@ -23,7 +23,7 @@ export interface Car {
 
 const Car = ({ car }: { car: Car }) => {
 
-    const navigate = useNavigate();
+  
 
 
     return (
