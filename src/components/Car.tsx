@@ -118,9 +118,7 @@ const Car = ({ car }: { car: Car }) => {
                         </div>
                         {/* BUTTON */}
                         <button
-                           
-                            className="bg-amber-500 hover:bg-amber-600 text-white py-2 px-3 md:py-3 md:px-4 rounded-lg text-xs md:text-sm transition w-full md:w-auto whitespace-nowrap font-sans cursor-pointer"
-                        >
+                            className="bg-amber-500 hover:bg-amber-600 text-white py-2 px-3 md:py-3 md:px-4 rounded-lg text-xs md:text-sm transition w-full md:w-auto whitespace-nowrap font-sans cursor-pointer">
                             View Details
                         </button>
 
