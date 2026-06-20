@@ -1,12 +1,100 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import RoleSelect from "../RoleSelect"
 import { EyeIcon, EyeOffIcon, LockIcon, MailIcon, User } from "lucide-react"
 import { useState } from "react";
 import { assets } from "../../assets/asset";
+import axios from "axios";
+import { api } from "../../services/api";
+import toast from "react-hot-toast";
+
+export interface RegisterResponse {
+  success: boolean;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    role: "customer" | "admin" | "dealer";
+    isApproved: boolean;
+  };
+  token: string;
+}
+
+type RegisterFormData = {
+  name: string,
+  email: string,
+  password: string
+  role: string
+}
+
 
 const SignUpForm = () => {
 
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState<"customer" | "dealer" | "">("");
+
+  const navigate = useNavigate()
+
+
+  const handleRegister = async (formData: RegisterFormData) => {
+    try {
+
+
+      if (!role) {
+        toast.error("Please select an account type");
+        return;
+      }
+
+      const res = await api.post<RegisterResponse>('/auth/register', {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role
+      })
+
+      const { user, token } = res.data
+
+
+      if (!user.isApproved) {
+        navigate("/pending-approval");
+        return;
+      }
+
+      localStorage.setItem('token', token)
+      localStorage.setItem('user', JSON.stringify(user))
+
+      // SET GLOBAL AXIOS HEADER
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      //ROLE ROUTING
+
+      const routes: Record<string, string> = {
+        dealer: "/dealer/dashboard",
+        admin: "/admin/dashboard",
+        customer: "/customer/dashboard",
+      }
+
+      toast.success("Registration successful");
+
+      navigate(routes[user.role] || "/");
+
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        console.log(error.response?.data)
+        toast.error(error.response?.data.message || 'Registration Failed')
+      }
+      else {
+        console.log(error);
+        toast.error("Something went wrong");
+      }
+    }
+
+  }
+
+
+
 
   return (
     <div className="w-full max-w-sm mx-auto px-4 sm:px-0">
@@ -25,9 +113,20 @@ const SignUpForm = () => {
       <p className="text-gray-600 text-sm mt-1">
         Join DriveHub in a few easy steps
       </p>
-      <RoleSelect />
+      <RoleSelect role={role} setRole={setRole} />
+
       {/* Form */}
-      <form className="mt-4 space-y-2">
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        handleRegister({
+          name,
+          email,
+          password,
+          role
+        })
+      }}
+
+        className="mt-4 space-y-2">
         {/* Full Name */}
         <div className="flex flex-col mt-1.5">
           <label htmlFor="email" className="text-sm font-medium">
@@ -37,10 +136,13 @@ const SignUpForm = () => {
           <div className="relative mt-1">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <input
-              id="email"
-              type="email"
+              id="name"
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Enter your full name"
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
           </div>
         </div>
@@ -54,8 +156,11 @@ const SignUpForm = () => {
             <input
               id="email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
           </div>
         </div>
@@ -72,7 +177,10 @@ const SignUpForm = () => {
               id="password"
               type={passwordVisible ? "text" : "password"}
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
             <button
               type="button"
@@ -93,7 +201,7 @@ const SignUpForm = () => {
           type="submit"
           className="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded-md font-medium transition"
         >
-          Sign In
+          Sign Up
         </button>
 
         {/* Divider */}

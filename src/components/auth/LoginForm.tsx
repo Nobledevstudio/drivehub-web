@@ -12,7 +12,7 @@ type LoginFormData = {
   password: string;
 };
 
-type LoginResponse = {
+interface LoginResponse {
   user: {
     id: string;
     name: string;
@@ -36,6 +36,7 @@ const LoginForm = () => {
 
   const handleLogin = async (formData: LoginFormData) => {
     try {
+
       const res = await api.post<LoginResponse>("/auth/login", {
         email: formData.email,
         password: formData.password,
@@ -72,8 +73,6 @@ const LoginForm = () => {
 
 
   };
-
-
 
 
   return (
@@ -121,6 +120,7 @@ const LoginForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
           </div>
         </div>
@@ -140,6 +140,7 @@ const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+              required
             />
             <button
               type="button"
