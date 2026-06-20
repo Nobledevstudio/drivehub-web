@@ -1,6 +1,13 @@
+import { getCurrentUser } from "../../services/authServices"
+
 const CustomerDashboard = () => {
+
+  const user = getCurrentUser()
+
   return (
-    <div>CustomerDashboard</div>
+   <div>
+      <h1>Welcome {user?.name}</h1>
+    </div>
   )
 }
 
