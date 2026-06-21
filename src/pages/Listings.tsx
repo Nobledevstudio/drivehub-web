@@ -7,6 +7,26 @@ import { useState } from "react";
 const Listings = () => {
 
     const [open, setOpen] = useState(false);
+    const [filters, setFilters] = useState({
+        listingType: "all",
+        price: 50000,
+        minYear: "",
+        maxYear: "",
+        brand: "",
+        carType: "",
+        location: "",
+        fuelType: "",
+        transmission: "",
+    })
+
+
+const filteredCars = carData.filter((car) => {
+  return (
+    (filters.listingType === "all" ||
+      car.listingType === filters.listingType) )
+});
+
+
 
     return (
         <section className="max-w-7xl mx-auto px-4 py-10">
@@ -23,6 +43,8 @@ const Listings = () => {
 
                 {/* SIDEBAR */}
                 <Sidebar
+                    filters={filters}
+                    setFilters={setFilters}
                     open={open}
                     setOpen={setOpen}
                 />
@@ -49,13 +71,12 @@ const Listings = () => {
 
                     <button
                         onClick={() => setOpen(true)}
-                        className="lg:hidden mb-4 bg-amber-400 text-white px-4 py-2 rounded-md"
-                    >
+                        className="lg:hidden mb-4 bg-amber-400 text-white px-4 py-2 rounded-md">
                         Show Filters
                     </button>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                        {carData.map((car) => (
+                        {filteredCars.map((car) => (
                             <Car
                                 key={car.id}
                                 car={car}
@@ -63,8 +84,8 @@ const Listings = () => {
                         ))}
                     </div>
 
-                       {/* Pagination */}
-                     
+                    {/* Pagination */}
+
                 </div>
 
             </div>

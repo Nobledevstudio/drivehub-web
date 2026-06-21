@@ -1,13 +1,28 @@
 import { RotateCcw, X } from "lucide-react"
 
+type FilterState = {
+    listingType: string;
+    price: number;
+    minYear: string;
+    maxYear: string;
+    brand: string;
+    carType: string;
+    location: string;
+    fuelType: string;
+    transmission: string;
+};
 type SidebarProps = {
-    open: boolean
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  filters: FilterState;
+  setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
+};
 
 
 
-const Sidebar = ({ open, setOpen }: SidebarProps) => {
+const Sidebar = ({open, setOpen, filters, setFilters} : SidebarProps) => {
+
+
     return (
         <div className={` fixed lg:static top-0 left-0 h-screen lg:h-auto w-[85%] sm:w-100 lg:w-auto z-50 overflow-y-auto bg-white border border-gray-100 rounded-none lg:rounded-xl p-4 space-y-6 transform transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 `}>
             {/* Mobile close */}
@@ -28,11 +43,28 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
 
             <div className="flex items-center gap-3">
 
-                <button className="flex-1 bg-white border border-amber-300 hover:bg-gray-300 text-gray-800 py-2 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
+                <button
+                    onClick={() =>
+                        setFilters((prev) => ({
+                            ...prev,
+                            listingType: "buy"
+                        }))}
+
+                    className={`flex-1 py-2 rounded-xl font-sans ${filters.listingType === "buy" ? "bg-amber-400 text-white" : "bg-white border-2 border-amber-400"}`}>
                     Buy
                 </button>
 
-                <button className="flex-1 bg-white border border-gray-200 text-gray-800 py-2 rounded-xl text-lg font-medium transition shadow-md hover:shadow-lg font-sans">
+                <button
+                    onClick={() =>
+                        setFilters((prev) => ({
+                            ...prev,
+                            listingType: "rent",
+                        }))
+                    }
+                    className={`flex-1 py-2 rounded-xl ${filters.listingType === "rent"
+                        ? "bg-amber-400 text-white"
+                        : "bg-white border-2 border-amber-400"
+                        }`}>
                     Rent
                 </button>
 

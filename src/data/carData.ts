@@ -23,6 +23,7 @@ export interface CarItem {
   color: string
   airconditioning?: boolean
   description: string
+  listingType: string
 }
 export const carData: CarItem[] = [
   {
@@ -43,6 +44,7 @@ export const carData: CarItem[] = [
     dealer: "Ola Motors",
     color: "black",
     airconditioning: true,
+    listingType: "rent",
     description:
       "Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips."
   },
@@ -63,8 +65,9 @@ export const carData: CarItem[] = [
     seats: 5,
     dealerId: 1,
     color: "black",
-     dealer: "Ola Motors",
+    dealer: "Ola Motors",
     airconditioning: true,
+    listingType: "rent",
     description:
       "Clean Honda Civic with sporty styling, responsive engine, premium interior, smooth handling, and modern safety features. Perfect for executive and daily drives."
   },
@@ -84,10 +87,11 @@ export const carData: CarItem[] = [
     transmission: 'automatic',
     seats: 5,
     dealerId: 1,
-     dealer: "Ola Motors",
+    dealer: "Ola Motors",
     isHotDeal: true,
     airconditioning: true,
     color: "black",
+    listingType: "buy",
     description:
       "Luxury Mercedes-Benz C-Class featuring premium leather seats, advanced infotainment system, powerful performance, elegant exterior, and exceptional ride comfort."
   },
@@ -111,6 +115,7 @@ export const carData: CarItem[] = [
     isHotDeal: true,
     color: "black",
     airconditioning: true,
+    listingType: "rent",
     description:
       "Powerful BMW 3 Series with sporty handling, luxurious cabin, advanced driving technology, smooth acceleration, and premium comfort for business or leisure trips."
   },
@@ -134,6 +139,7 @@ export const carData: CarItem[] = [
     isHotDeal: true,
     color: "black",
     airconditioning: true,
+    listingType: "rent",
     description:
       "Spacious Chevrolet Malibu with elegant design, comfortable seating, fuel-efficient performance, modern dashboard features, and smooth driving experience."
   },
@@ -157,6 +163,7 @@ export const carData: CarItem[] = [
     isHotDeal: true,
     color: "black",
     airconditioning: true,
+    listingType: "rent",
     description:
       "Reliable Hyundai Elantra with stylish exterior, clean interior, efficient fuel economy, smooth transmission, and excellent comfort for personal or corporate use."
   }

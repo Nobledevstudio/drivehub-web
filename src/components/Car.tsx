@@ -24,8 +24,6 @@ export interface Car {
 const Car = ({ car }: { car: Car }) => {
 
   
-
-
     return (
         <Link to={`/car/${car.id}`}>
             <div className="bg-white border border-gray-100 rounded-2xl hover:shadow-lg transition">
