@@ -21,14 +21,32 @@ import CustomerDashboard from "./pages/customer/CustomerDashboard";
 import { Toaster } from "react-hot-toast";
 import PendingApproval from "./pages/PendingApproval";
 import ScrollToTop from "./components/ScrollToTop";
+import DashboardLayout from "./layouts/DashboardLayout";
+import Users from "./pages/admin/Users";
+import Vechicles from "./pages/admin/Vechicles";
+import Settings from "./pages/admin/Settings";
+import Payments from "./pages/admin/Payments";
+import MyVechicles from "./pages/dealer/MyVechicles";
+import Bookings from "./pages/dealer/Bookings";
+import Earnings from "./pages/dealer/Earnings";
+import DealerSettings from "./pages/dealer/DealerSettings";
+import Wishlist from "./pages/customer/Wishlist";
+import MyRentals from "./pages/customer/MyRentals";
+import Profile from "./pages/customer/Profile";
+import Purchases from "./pages/customer/Purchases";
+import Rentals from "./pages/admin/Rentals";
+import AdminPurchases from "./pages/admin/AdminPurchases";
+import InspectionRequest from "./pages/admin/InspectionRequest";
+
+
 
 
 
 const App = () => {
   return (
     <>
-      <ScrollToTop/>
-      <Toaster  position="top-right"/>
+      <ScrollToTop />
+      <Toaster position="top-right" />
       <Routes>
 
         {/* MAIN LAYOUT */}
@@ -51,31 +69,59 @@ const App = () => {
         </Route>
 
 
-        {/* Protected Routes */}
+        {/* ADMIN */}
         <Route
-          path="/admin/dashboard"
+          path="/admin"
           element={
             <ProtectedRoute allowedRoles={["admin"]}>
-              <AdminDashboard />
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
-        <Route path="/dealer/dashboard" element={
-          <ProtectedRoute allowedRoles={["dealer"]}>
-            <DealerDashboard />
-          </ProtectedRoute>
-        }
-        />
+        >
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="users" element={<Users />} />
+          <Route path="vehicles" element={<Vechicles />} />
+          <Route path="rentals" element={<Rentals />} />
+          <Route path="purchases" element={<AdminPurchases />} />
+           <Route path="inspections" element={<InspectionRequest />} />
+           <Route path="payments" element={<Payments />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+
+        {/* DEALER */}
         <Route
-          path="/customer/dashboard"
+          path="/dealer"
+          element={
+            <ProtectedRoute allowedRoles={["dealer"]}>
+              <DashboardLayout
+               />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="dashboard" element={<DealerDashboard />} />
+          <Route path="my-vehicles" element={<MyVechicles />} />
+          <Route path="bookings" element={<Bookings />} />
+          <Route path="earnings" element={<Earnings />} />
+          <Route path="settings" element={<DealerSettings />} />
+        </Route>
+
+        {/* CUSTOMER */}
+        <Route
+          path="/customer"
           element={
             <ProtectedRoute allowedRoles={["customer"]}>
-              <CustomerDashboard />
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="dashboard" element={<CustomerDashboard />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="rentals" element={<MyRentals />} />
+          <Route path="purchases" element={<Purchases />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
 
-       <Route path="/pending-approval" element={<PendingApproval/>} ></Route>
+        <Route path="/pending-approval" element={<PendingApproval />} ></Route>
 
       </Routes>
     </>
