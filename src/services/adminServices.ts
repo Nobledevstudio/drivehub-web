@@ -5,3 +5,14 @@ export const getDashboardStats = async () => {
   const response = await api.get("/admin/stats");
   return response.data.data;
 };
+
+export const getCarStatus = async () => {
+  const response = await api.get("/admin/car-status");
+  return response.data.data;
+};
+
+export const getRecentActivties = async () => {
+  const response = await api.get("/admin/recent");
+  return response.data.data;
+};
+
