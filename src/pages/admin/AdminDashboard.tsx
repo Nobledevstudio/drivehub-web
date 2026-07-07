@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "../../services/authServices";
-import { getCarStatus, getDashboardStats, getRecentActivties } from "../../services/adminServices";
+import { getCarStatus, getDashboardStats, getRecentActivties, getRecentCars } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
 import {
   Car,
@@ -10,6 +10,7 @@ import {
 } from "lucide-react"
 import VechicleStatusChart from "../../components/dashboard/VechicleStatusChart";
 import RecentActivities from "../../components/dashboard/RecentActivities";
+import LatestVehiclesTable from "../../components/dashboard/LatestVehiclesTable";
 
 const AdminDashboard = () => {
   const user = getCurrentUser();
@@ -28,21 +29,25 @@ const AdminDashboard = () => {
     reserved: 0
   });
 
-  const [activities, setActivities] = useState([]);
+   const [activities, setActivities] = useState([]);
+   const [recentCars, setRecentCars] = useState([]);
 
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const [statsData, vehicleData, activityData] =
+        const [statsData, vehicleData, activityData, recentCarsData] =
           await Promise.all([
             getDashboardStats(),
             getCarStatus(),
             getRecentActivties(),
+            getRecentCars(),
           ]);
+            console.log("Recent Vehicles:", recentCarsData);
 
         setStats(statsData);
         setVehicleStatus(vehicleData);
         setActivities(activityData);
+        setRecentCars(recentCarsData.cars); // Assuming the API response has a 'cars' property containing the recent cars
       } catch (error) {
         console.error(error);
       }
@@ -70,6 +75,7 @@ const AdminDashboard = () => {
         <VechicleStatusChart vehicleStatus={vehicleStatus}/>
         <RecentActivities  activities={activities}/>
       </div>
+        <LatestVehiclesTable cars={recentCars} />
     </div>
   );
 };

@@ -16,3 +16,8 @@ export const getRecentActivties = async () => {
   return response.data.data;
 };
 
+
+export const getRecentCars = async () => {
+  const response = await api.get("/admin/recent-cars");
+  return response.data;
+};
