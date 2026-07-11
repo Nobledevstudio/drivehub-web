@@ -21,3 +21,7 @@ export const getRecentCars = async () => {
   const response = await api.get("/admin/recent-cars");
   return response.data;
 };
+export const getUsersStats = async () => {
+  const response = await api.get("/admin/users/stats");
+  return response.data;
+};

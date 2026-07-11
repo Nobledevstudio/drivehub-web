@@ -33,6 +33,7 @@ const AdminDashboard = () => {
    const [recentCars, setRecentCars] = useState([]);
 
   useEffect(() => {
+
     const fetchDashboard = async () => {
       try {
         const [statsData, vehicleData, activityData, recentCarsData] =
@@ -42,7 +43,8 @@ const AdminDashboard = () => {
             getRecentActivties(),
             getRecentCars(),
           ]);
-            console.log("Recent Vehicles:", recentCarsData);
+          
+        // console.log("Recent Vehicles:", recentCarsData);
 
         setStats(statsData);
         setVehicleStatus(vehicleData);
