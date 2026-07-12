@@ -15,7 +15,6 @@ interface Dealer {
 }
 
 interface Cars {
-
   _id: string;
   title: string;
   brand: string;
@@ -81,6 +80,7 @@ useEffect(() => {
           View All Vehicles
         </button>
       </div>
+
       <div className="overflow-x-auto border border-gray-200 bg-white">
         <table className="min-w-full border-collapse border border-gray-200">
           <thead className="bg-gray-50">

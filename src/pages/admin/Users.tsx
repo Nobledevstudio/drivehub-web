@@ -1,14 +1,25 @@
 import { ChevronRight, User2, PlusIcon, UsersIcon, ShoppingBagIcon, SearchIcon, DownloadIcon, Calendar, } from "lucide-react"
 import { useEffect, useState } from "react"
-import { getUsersStats } from "../../services/adminServices";
+import { getUsers, getUsersStats } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
 import DatePicker from "react-datepicker";
+import UsersTable from "../../components/admin/UsersTable";
 
 interface UserStats {
   totalUsers: number;
   customers: number;
   dealers: number;
   admins: number;
+}
+
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  role: "customer" | "dealer" | "admin";
+  phone: string;
+  status: "active" | "pending" | "inactive" | "banned";
+  joinedDate: string;
 }
 
 const Users = () => {
@@ -21,20 +32,26 @@ const Users = () => {
   })
 
   const [joinedDate, setJoinedDate] = useState<Date | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    const fetchStats = async (): Promise<void> => {
-      try {
-        const res = await getUsersStats();
 
-        console.log(res.data);
-        setUserStats(res.data);
+    const fetchUsersData = async (): Promise<void> => {
+
+      try {
+        const [UsersStatsData, UsersData] = await Promise.all([
+          getUsersStats(),
+          getUsers()
+        ]);
+        
+        setUserStats(UsersStatsData.data);
+        setUsers(UsersData);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchStats();
+    fetchUsersData();
   }, []);
 
 
@@ -129,6 +146,10 @@ const Users = () => {
           <DownloadIcon className="h-4 w-4" />
           Export
         </button>
+      </div>
+
+      <div>
+        <UsersTable users={users} />
       </div>
 
     </div>
