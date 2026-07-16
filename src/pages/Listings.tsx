@@ -78,7 +78,7 @@ const filteredCars = carData.filter((car) => {
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                         {filteredCars.map((car) => (
                             <Car
-                                key={car.id}
+                                key={car._id}
                                 car={car}
                             />
                         ))}

@@ -37,7 +37,7 @@ const CarBooking = () => {
     ]
 
     const { id } = useParams();
-    const bookingCar = carData.find((c) => c?.id === Number(id))
+    const bookingCar = carData.find((c) => c._id === id);
 
     if (!bookingCar) return <div>Car not found</div>;
 
@@ -240,7 +240,7 @@ const CarBooking = () => {
                                     <Building2 className="w-4 h-4" />
                                     <p>Dealer</p>
                                 </div>
-                                <p className="font-semibold">{bookingCar.dealer}</p>
+                                <p className="font-semibold">{bookingCar.dealer.name}</p>
                             </div>
 
                             <div className="flex justify-between">

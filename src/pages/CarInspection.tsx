@@ -17,7 +17,7 @@ const CarInspection = () => {
 
   const { id } = useParams();
 
-  const car = carData.find((car) => car.id === Number(id));
+  const car = carData.find((car) => car._id === id);
 
   if (!car) {
     return <div className="p-6 text-red-500">Car not found</div>;
@@ -85,7 +85,7 @@ const CarInspection = () => {
 
               <div className="space-y-1">
                 <h2 className="text-md font-semibold">
-                  {car.dealer}
+                  {car.dealer.name}
                 </h2>
 
                 <p className="flex items-center gap-1 text-sm text-gray-600">

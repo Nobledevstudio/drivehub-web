@@ -9,9 +9,9 @@ const CarDetails = () => {
 
     const { id } = useParams();
 
-    const car = carData.find((car) => car.id === Number(id));
+    const car = carData.find((car) => car._id === id);
 
-    const relatedCars = carData.filter((item) => item.brand === car?.brand && item.id !== car.id)
+    const relatedCars = carData.filter((item) => item.brand === car?.brand && item._id !== car._id)
 
     //console.log(relatedCars);
 
@@ -201,7 +201,7 @@ const CarDetails = () => {
 
                         {relatedCars.map((car) => (
                             <Car
-                                key={car.id}
+                                key={car._id}
                                 car={car}
                             />
                         ))}

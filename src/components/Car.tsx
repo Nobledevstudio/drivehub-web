@@ -7,7 +7,7 @@ const Car = ({ car }: { car: CarItem }) => {
 
   
     return (
-        <Link to={`/car/${car.id}`}>
+        <Link to={`/car/${car._id}`}>
             <div className="bg-white border border-gray-100 rounded-2xl hover:shadow-lg transition">
 
                 <div className="relative h-28 sm:h-40 md:h-45 w-full overflow-hidden rounded-xl">

@@ -2,7 +2,7 @@ import { assets } from "../assets/asset";
 
 
 export interface CarItem {
-  id: string,
+  _id: string,
   name: string
   brand: string
   location: string
@@ -32,7 +32,7 @@ export interface CarItem {
 
 export const carData: CarItem[] = [
   {
-    id: "1",
+    _id: "1",
     name: 'Toyota Camry',
     brand: 'Toyota',
     location: 'Lagos',
@@ -57,7 +57,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: "2",
+   _id: "2",
     name: 'Honda Civic',
     brand: 'Honda',
     location: 'Lekki, Lagos',
@@ -82,7 +82,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: "3",
+    _id: "3",
     name: 'Mercedes-Benz C-Class',
     brand: 'Honda',
     location: 'New York',
@@ -108,7 +108,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: "4",
+    _id: "4",
     name: 'BMW 3 Series',
     brand: 'BMW',
     location: 'Lagos, Nigeria',
@@ -134,7 +134,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: "5",
+    _id: "5",
     name: 'Chevrolet Malibu',
     brand: 'Chevrolet',
     location: 'Lagos',
@@ -160,7 +160,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: "6",
+    _id: "6",
     name: 'Hyundai Elantra',
     brand: 'Hyundai',
     location: 'Lagos',

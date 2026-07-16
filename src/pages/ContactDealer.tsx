@@ -9,7 +9,7 @@ const ContactDealer = () => {
   const [notes, setNotes] = useState("");
   const maxLength = 500;
   const { id } = useParams();
-  const car = carData.find((car) => car.id === Number(id));
+  const car = carData.find((car) => car._id === id);
 
 
   if (!car) {
@@ -243,7 +243,7 @@ const ContactDealer = () => {
               Dealer Information
             </h3>
 
-            <h2 className="text-lg font-semibold">{car.dealer}</h2>
+            <h2 className="text-lg font-semibold">{car.dealer.name}</h2>
 
             <span className="inline-block mt-2 bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">
               Verified Dealer
