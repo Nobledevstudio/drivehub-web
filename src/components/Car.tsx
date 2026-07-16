@@ -1,31 +1,9 @@
 import { MapPin, Star, Heart } from "lucide-react"
 import {  Link } from "react-router-dom"
+import type { CarItem } from "../data/carData"
 
-export interface Car {
-  id: number;
-  name: string;
-  brand: string;
-  location: string;
-  pricing: {
-    rent?: number;
-    buy?: number;
-  };
-  image: string;
-  rating: number;
-  year: number;
-  fuel: string;
-  transmission: string;
-  seats: number;
-    dealer: {
-    _id: string
-    name: string
-    email?: string
-  }
-  isHotDeal?: boolean;
-  color?: string;
-}
 
-const Car = ({ car }: { car: Car }) => {
+const Car = ({ car }: { car: CarItem }) => {
 
   
     return (

@@ -1,8 +1,7 @@
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
-import type { Car } from "./Car";
-
+import type { CarItem } from "../data/carData";
 interface CarImageGalleryProps {
-     car: Car
+     car: CarItem
 }
 
 
