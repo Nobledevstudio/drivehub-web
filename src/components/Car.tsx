@@ -16,7 +16,11 @@ export interface Car {
   fuel: string;
   transmission: string;
   seats: number;
-  dealerId: number;
+    dealer: {
+    _id: string
+    name: string
+    email?: string
+  }
   isHotDeal?: boolean;
   color?: string;
 }
