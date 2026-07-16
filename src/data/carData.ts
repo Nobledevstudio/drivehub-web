@@ -2,7 +2,7 @@ import { assets } from "../assets/asset";
 
 
 export interface CarItem {
-  id: number
+  id: string,
   name: string
   brand: string
   location: string
@@ -17,17 +17,22 @@ export interface CarItem {
   fuel: 'petrol' | 'diesel' | 'electric' | 'hybrid'
   transmission: 'automatic' | 'manual'
   seats: number
-  dealerId: number
-  dealer: string
   isHotDeal?: boolean,
   color: string
   airconditioning?: boolean
   description: string
   listingType: string
+    dealer: {
+    _id: string
+    name: string
+    email?: string
+  }
 }
+
+
 export const carData: CarItem[] = [
   {
-    id: 1,
+    id: "1",
     name: 'Toyota Camry',
     brand: 'Toyota',
     location: 'Lagos',
@@ -40,8 +45,10 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    dealer: "Ola Motors",
+    dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     color: "black",
     airconditioning: true,
     listingType: "rent",
@@ -50,7 +57,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: 2,
+    id: "2",
     name: 'Honda Civic',
     brand: 'Honda',
     location: 'Lekki, Lagos',
@@ -63,9 +70,11 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    color: "black",
-    dealer: "Ola Motors",
+    color: "black",   
+    dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     airconditioning: true,
     listingType: "rent",
     description:
@@ -73,7 +82,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: 3,
+    id: "3",
     name: 'Mercedes-Benz C-Class',
     brand: 'Honda',
     location: 'New York',
@@ -86,8 +95,10 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    dealer: "Ola Motors",
+   dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     isHotDeal: true,
     airconditioning: true,
     color: "black",
@@ -97,7 +108,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: 4,
+    id: "4",
     name: 'BMW 3 Series',
     brand: 'BMW',
     location: 'Lagos, Nigeria',
@@ -110,8 +121,10 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    dealer: "Ola Motors",
+   dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     isHotDeal: true,
     color: "black",
     airconditioning: true,
@@ -121,7 +134,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: 5,
+    id: "5",
     name: 'Chevrolet Malibu',
     brand: 'Chevrolet',
     location: 'Lagos',
@@ -134,8 +147,10 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    dealer: "Ola Motors",
+      dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     isHotDeal: true,
     color: "black",
     airconditioning: true,
@@ -145,7 +160,7 @@ export const carData: CarItem[] = [
   },
 
   {
-    id: 6,
+    id: "6",
     name: 'Hyundai Elantra',
     brand: 'Hyundai',
     location: 'Lagos',
@@ -158,8 +173,10 @@ export const carData: CarItem[] = [
     fuel: 'petrol',
     transmission: 'automatic',
     seats: 5,
-    dealerId: 1,
-    dealer: "Ola Motors",
+     dealer:{
+      _id: "1",
+      name: "Ola motors"
+    },
     isHotDeal: true,
     color: "black",
     airconditioning: true,

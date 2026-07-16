@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-
 import { Home } from "./pages/Home";
 import Listings from "./pages/Listings";
 import CarDetails from "./pages/CarDetails";
@@ -7,6 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+
 
 import AuthLayouts from "./layouts/AuthLayouts";
 import MainLayouts from "./layouts/MainLayouts";
@@ -37,8 +37,6 @@ import Purchases from "./pages/customer/Purchases";
 import Rentals from "./pages/admin/Rentals";
 import AdminPurchases from "./pages/admin/AdminPurchases";
 import InspectionRequest from "./pages/admin/InspectionRequest";
-
-
 
 
 
@@ -89,12 +87,10 @@ const App = () => {
         </Route>
 
         {/* DEALER */}
-        <Route
-          path="/dealer"
+        <Route  path="/dealer"
           element={
             <ProtectedRoute allowedRoles={["dealer"]}>
-              <DashboardLayout
-               />
+              <DashboardLayout />
             </ProtectedRoute>
           }
         >

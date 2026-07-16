@@ -32,3 +32,9 @@ export const getUsers = async (): Promise<User[]> => {
   const response = await api.get("/admin/users");
   return response.data.users;
 };
+
+export const getCarsStats = async () => {
+  const response = await api.get("/admin/cars/stats");
+  return response.data.data;
+};
+
