@@ -13,7 +13,6 @@ export interface CarItem {
     rent?: number
     buy?: number
   }
-
   fuel: 'petrol' | 'diesel' | 'electric' | 'hybrid'
   transmission: 'automatic' | 'manual'
   seats: number
