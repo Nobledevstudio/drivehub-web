@@ -5,31 +5,12 @@ import {
   XCircle,
   Trash2,
 } from "lucide-react";
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
+import type { CarItem } from "../../data/carData";
 
-
-interface Dealer {
-  _id: string;
-  name: string;
-  email: string;
-}
-
-interface Cars {
-  _id: string;
-  title: string;
-  brand: string;
-  model: string;
-  year: number;
-  price: number;
-  images: string[]; // change to string[] later
-  listingType: "buy" | "rent" | "both";
-  status: "available" | "reserved" | "rented" | "sold";
-  dealer: Dealer;
-  createdAt: string;
-}
 
 interface RecentCarsProps {
-  cars: Cars[];
+  cars: CarItem[];
 }
 
 
@@ -61,15 +42,18 @@ const LatestVehiclesTable = ({ cars }: RecentCarsProps) => {
      DELETE /admin/cars/:id
   };
   */
-useEffect(() => {
-  const handleClickOutside = () => setOpenMenu(null);
+  useEffect(() => {
+    const handleClickOutside = () => setOpenMenu(null);
 
-  document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
-  return () => {
-    document.removeEventListener("click", handleClickOutside);
-  };
-}, []);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+
+
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 mt-4">
@@ -99,136 +83,128 @@ useEffect(() => {
 
           <tbody>
             {cars.length > 0 ? (
-              cars.map((car) => (
-                <tr key={car._id} className="transition-colors duration-200 hover:bg-gray-50">
-                  {/* Car */}
-                  <td className="border border-gray-200 px-6 py-4">
-                    <div className="flex items-center gap-4">
-                      <img src={
-                        car.images?.[0] ||
-                        "https://placehold.co/80x60?text=Car"}
-                        alt={car.title}
-                        className="h-14 w-20 rounded-lg border border-gray-200 object-cover"
-                      />
+              cars.map((car) => {
+                const displayPrice =
+                  car.listingType === "buy"
+                    ? car.pricing?.buy
+                    : car.listingType === "rent"
+                      ? car.pricing?.rent
+                      : car.pricing?.buy ?? car.pricing?.rent;
 
-                      <div>
-                        <p className="font-semibold text-gray-900">
-                          {car.title}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          {car.brand} • {car.year}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
+                return (
+                  <tr
+                    key={car._id}
+                    className="transition-colors duration-200 hover:bg-gray-50"
+                  >
+                    {/* Car */}
+                    <td className="border border-gray-200 px-6 py-4">
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={
+                            car.images?.[0]?.url ||
+                            "https://placehold.co/80x60?text=Car"
+                          }
+                          alt={car.brand}
+                          className="h-14 w-20 rounded-lg border border-gray-200 object-cover"
+                        />
 
-                  {/* Dealer */}
-                  <td className="border border-gray-200 px-6 py-4 whitespace-nowrap text-gray-700">
-                    {car.dealer?.name || "-"}
-                  </td>
+                        <div>
+                          <p className="font-semibold text-gray-900">
+                            {car.brand} {car.model}
+                          </p>
 
-                  {/* Listing Type */}
-                  <td className="border border-gray-200 px-6 py-4 whitespace-nowrap">
-                    <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium capitalize text-blue-700">
-                      {car.listingType}
-                    </span>
-                  </td>
-
-                  {/* Price */}
-                  <td className="border border-gray-200 px-6 py-4 whitespace-nowrap font-medium text-gray-900">
-                    {car.price.toLocaleString("en-NG", {
-                      style: "currency",
-                      currency: "NGN",
-                    })}
-                  </td>
-
-                  {/* Status */}
-                  <td className="border border-gray-200 px-6 py-4 whitespace-nowrap">
-                    <span
-                      className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${statusColors[car.status]}`}
-                    >
-                      {car.status}
-                    </span>
-                  </td>
-
-                  {/* Listed On */}
-                  <td className="border border-gray-200 px-6 py-4 whitespace-nowrap text-gray-600">
-                    {new Date(car.createdAt).toLocaleDateString()}
-                  </td>
-
-                  <td className="border border-gray-200 px-6 py-4 relative">
-
-                    <div className="flex items-center justify-center gap-2">
-                      <button
-
-                        className="rounded-lg p-2 hover:bg-gray-100"
-                        title="View Details"
-                      >
-                        <Eye size={18} />
-                      </button>
-
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setOpenMenu(openMenu === car._id ? null : car._id);
-                        }}
-                        className="rounded-lg p-2 hover:bg-gray-100 transition"
-                      >
-                        <MoreVertical size={18} />
-                      </button>
-
-                      {openMenu === car._id && (
-                        <div className="absolute right-6 top-12 z-50 w-48 rounded-lg border border-gray-200 bg-white shadow-lg">
-                          <button
-                            onClick={() => {
-                              // handleView(car);
-                              setOpenMenu(null);
-                            }}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-50"
-                          >
-                            <Eye size={16} />
-                            View Details
-                          </button>
-
-                          <button
-                            onClick={() => {
-                              // handleApprove(car._id);
-                              setOpenMenu(null);
-                            }}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-sm text-green-600 hover:bg-green-50"
-                          >
-                            <CheckCircle size={16} />
-                            Approve
-                          </button>
-
-                          <button
-                            onClick={() => {
-                              // handleReject(car._id);
-                              setOpenMenu(null);
-                            }}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-sm text-amber-600 hover:bg-amber-50"
-                          >
-                            <XCircle size={16} />
-                            Reject
-                          </button>
-
-                          <button
-                            onClick={() => {
-                              // handleDelete(car._id);
-                              setOpenMenu(null);
-                            }}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50"
-                          >
-                            <Trash2 size={16} />
-                            Delete
-                          </button>
+                          <p className="text-sm text-gray-500">
+                            {car.year} • {car.color}
+                          </p>
                         </div>
-                      )}
-                    </div>
-                  </td>
+                      </div>
+                    </td>
 
-                </tr>
-              ))
+                    {/* Dealer */}
+                    <td className="border border-gray-200 px-6 py-4 whitespace-nowrap text-gray-700">
+                      {car.dealer?.name || "-"}
+                    </td>
+
+                    {/* Listing Type */}
+                    <td className="border border-gray-200 px-6 py-4 whitespace-nowrap">
+                      <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium capitalize text-blue-700">
+                        {car.listingType}
+                      </span>
+                    </td>
+
+                    {/* Price */}
+                    <td className="border border-gray-200 px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                      {displayPrice?.toLocaleString("en-NG", {
+                        style: "currency",
+                        currency: "NGN",
+                      })}
+                    </td>
+
+                    {/* Status */}
+                    <td className="border border-gray-200 px-6 py-4 whitespace-nowrap">
+                      <span
+                        className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${statusColors[car.status ?? "available"]
+                          }`}
+                      >
+                        {car.status ?? "available"}
+                      </span>
+                    </td>
+
+                    {/* Listed On */}
+                    <td className="border border-gray-200 px-6 py-4 whitespace-nowrap text-gray-600">
+                      {car.createdAt
+                        ? new Date(car.createdAt).toLocaleDateString()
+                        : "-"}
+                    </td>
+
+                    {/* Actions */}
+                    <td className="border border-gray-200 px-6 py-4 relative">
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          className="rounded-lg p-2 hover:bg-gray-100"
+                          title="View Details"
+                        >
+                          <Eye size={18} />
+                        </button>
+
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenMenu(openMenu === car._id ? null : car._id);
+                          }}
+                          className="rounded-lg p-2 hover:bg-gray-100 transition"
+                        >
+                          <MoreVertical size={18} />
+                        </button>
+
+                        {openMenu === car._id && (
+                          <div className="absolute right-6 top-12 z-50 w-48 rounded-lg border border-gray-200 bg-white shadow-lg">
+                            <button className="flex w-full items-center gap-3 px-4 py-3 text-sm hover:bg-gray-50">
+                              <Eye size={16} />
+                              View Details
+                            </button>
+
+                            <button className="flex w-full items-center gap-3 px-4 py-3 text-sm text-green-600 hover:bg-green-50">
+                              <CheckCircle size={16} />
+                              Approve
+                            </button>
+
+                            <button className="flex w-full items-center gap-3 px-4 py-3 text-sm text-amber-600 hover:bg-amber-50">
+                              <XCircle size={16} />
+                              Reject
+                            </button>
+
+                            <button className="flex w-full items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50">
+                              <Trash2 size={16} />
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
             ) : (
               <tr>
                 <td
@@ -240,6 +216,7 @@ useEffect(() => {
               </tr>
             )}
           </tbody>
+
         </table>
       </div>
     </div>

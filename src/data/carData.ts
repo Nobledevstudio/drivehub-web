@@ -1,186 +1,71 @@
-import { assets } from "../assets/asset";
-
-
 export interface CarItem {
-  _id: string,
-  name: string
-  brand: string
-  location: string
-  image: string
-  rating: number
-  year: number
-  pricing: {
-    rent?: number
-    buy?: number
-  }
-  fuel: 'petrol' | 'diesel' | 'electric' | 'hybrid'
-  transmission: 'automatic' | 'manual'
-  seats: number
-  isHotDeal?: boolean,
-  color: string
-  airconditioning?: boolean
-  description: string
-  listingType: string
-    dealer: {
-    _id: string
-    name: string
-    email?: string
-  }
+  _id: string;
+  brand: string;
+  model: string;
+  year: number;
+  description: string;
+  images: {
+    url: string;
+    public_id: string;
+  }[];
+  type?: string;
+  color: string;
+  location: string;
+  fuel: "petrol" | "diesel" | "electric" | "hybrid";
+  transmission: "automatic" | "manual";
+  seats?: number;
+  airConditioning?: boolean;
+  rating: number;
+  isHotDeal?: boolean;
+  pricing?: {
+    rent?: number;
+    buy?: number;
+  };
+  listingType: "buy" | "rent" | "both";
+  dealer: {
+    _id: string;
+    name: string;
+    email?: string;
+  };
+  status: "available" | "reserved" | "rented" | "sold";
+  approvalStatus: "pending" | "approved" | "rejected";
+  createdAt: string;
+  updatedAt: string;
 }
 
-
 export const carData: CarItem[] = [
-  {
+   {
+  _id: "1",
+  brand: "Toyota",
+  model: "Camry",
+  type:" Sedan",
+  location: "Lagos",
+  images: [
+    {
+      url: "https://res.cloudinary.com/drd6sy1dx/image/upload/v1784377017/drivehub/cars/m8yla3wtkcwxxowycesj.jpg",
+      public_id: "drivehub/cars/toyota-camry",
+    },
+  ],
+  pricing: {
+    rent: 45000,
+  },
+  rating: 4.5,
+  year: 2020,
+  fuel: "petrol",
+  transmission: "automatic",
+  seats: 5,
+  dealer: {
     _id: "1",
-    name: 'Toyota Camry',
-    brand: 'Toyota',
-    location: 'Lagos',
-    image: assets.car_1,
-    pricing: {
-      rent: 45000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-    dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    color: "black",
-    airconditioning: true,
-    listingType: "rent",
-    description:
-      "Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips."
+    name: "Ola Motors",
   },
-
-  {
-   _id: "2",
-    name: 'Honda Civic',
-    brand: 'Honda',
-    location: 'Lekki, Lagos',
-    image: assets.car_1,
-    pricing: {
-      rent: 55000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-    color: "black",   
-    dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    airconditioning: true,
-    listingType: "rent",
-    description:
-      "Clean Honda Civic with sporty styling, responsive engine, premium interior, smooth handling, and modern safety features. Perfect for executive and daily drives."
-  },
-
-  {
-    _id: "3",
-    name: 'Mercedes-Benz C-Class',
-    brand: 'Honda',
-    location: 'New York',
-    image: assets.car_1,
-    pricing: {
-      buy: 75000000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-   dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    isHotDeal: true,
-    airconditioning: true,
-    color: "black",
-    listingType: "buy",
-    description:
-      "Luxury Mercedes-Benz C-Class featuring premium leather seats, advanced infotainment system, powerful performance, elegant exterior, and exceptional ride comfort."
-  },
-
-  {
-    _id: "4",
-    name: 'BMW 3 Series',
-    brand: 'BMW',
-    location: 'Lagos, Nigeria',
-    image: assets.car_1,
-    pricing: {
-      rent: 85000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-   dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    isHotDeal: true,
-    color: "black",
-    airconditioning: true,
-    listingType: "rent",
-    description:
-      "Powerful BMW 3 Series with sporty handling, luxurious cabin, advanced driving technology, smooth acceleration, and premium comfort for business or leisure trips."
-  },
-
-  {
-    _id: "5",
-    name: 'Chevrolet Malibu',
-    brand: 'Chevrolet',
-    location: 'Lagos',
-    image: assets.car_1,
-    pricing: {
-      rent: 85000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-      dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    isHotDeal: true,
-    color: "black",
-    airconditioning: true,
-    listingType: "rent",
-    description:
-      "Spacious Chevrolet Malibu with elegant design, comfortable seating, fuel-efficient performance, modern dashboard features, and smooth driving experience."
-  },
-
-  {
-    _id: "6",
-    name: 'Hyundai Elantra',
-    brand: 'Hyundai',
-    location: 'Lagos',
-    image: assets.car_1,
-    pricing: {
-      rent: 85000
-    },
-    rating: 4.5,
-    year: 2020,
-    fuel: 'petrol',
-    transmission: 'automatic',
-    seats: 5,
-     dealer:{
-      _id: "1",
-      name: "Ola motors"
-    },
-    isHotDeal: true,
-    color: "black",
-    airconditioning: true,
-    listingType: "rent",
-    description:
-      "Reliable Hyundai Elantra with stylish exterior, clean interior, efficient fuel economy, smooth transmission, and excellent comfort for personal or corporate use."
-  }
+  color: "black",
+  airConditioning: true,
+  listingType: "rent",
+  status: "available",
+  approvalStatus: "approved",
+  isHotDeal: false,
+  description:"Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips.",
+  createdAt: "2026-07-18T12:00:00.000Z",
+  updatedAt: "2026-07-18T12:00:00.000Z",
+}
 ]
