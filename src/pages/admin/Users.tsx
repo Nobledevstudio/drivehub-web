@@ -4,6 +4,7 @@ import { getUsers, getUsersStats } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
 import DatePicker from "react-datepicker";
 import UsersTable from "../../components/admin/UsersTable";
+import PageLoader from "../../components/common/PageLoader";
 
 interface UserStats {
   totalUsers: number;
@@ -25,6 +26,7 @@ export interface User {
 
 const Users = () => {
 
+  const [loading, setLoading] = useState(true)
   const [userStats, setUserStats] = useState<UserStats>({
     totalUsers: 0,
     customers: 0,
@@ -35,6 +37,7 @@ const Users = () => {
   const [joinedDate, setJoinedDate] = useState<Date | null>(null);
   const [users, setUsers] = useState<User[]>([]);
 
+
   useEffect(() => {
 
     const fetchUsersData = async (): Promise<void> => {
@@ -44,16 +47,27 @@ const Users = () => {
           getUsersStats(),
           getUsers()
         ]);
-        
+
         setUserStats(UsersStatsData.data);
         setUsers(UsersData);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false)
       }
     };
 
     fetchUsersData();
   }, []);
+
+  if (loading) {
+    return (
+      <PageLoader
+        title="Loading Users"
+        description="Fetching user accounts..."
+      />
+    )
+  }
 
 
   return (

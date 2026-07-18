@@ -2,6 +2,7 @@ import { BadgeCheck, CarIcon, ChevronRight, CircleCheckBig, CircleX, Clock3, Dow
 import { useEffect, useState } from "react";
 import { getCarsStats } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
+import PageLoader from "../../components/common/PageLoader";
 
 interface CarsStats {
   totalCars: number,
@@ -15,7 +16,7 @@ interface CarsStats {
 const Vechicles = () => {
 
 
-
+  const [loading, setLoading] = useState(true);
   const [carsStats, setCarsStats] = useState<CarsStats>({
     totalCars: 0,
     activeCars: 0,
@@ -30,15 +31,26 @@ const Vechicles = () => {
         const [carsStatsData] = await Promise.all([
           getCarsStats()
         ])
-
         setCarsStats(carsStatsData)
-
       } catch (error) {
-          console.error(error);
+        console.error(error);
+      }finally{
+        setLoading(false)
       }
     }
     fetchCarsStats()
   }, [])
+
+
+
+  if (loading) {
+    return (
+      <PageLoader
+        title="Loading Vehicles"
+        description="Fetching available cars..."
+      />
+    )
+  }
 
 
   return (
@@ -77,7 +89,7 @@ const Vechicles = () => {
       </div>
 
 
-    {/* ------------------------ Filters ------------------------ */}
+      {/* ------------------------ Filters ------------------------ */}
       <div className="mt-6 flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm lg:flex-row lg:items-center lg:justify-between">
         {/* Left */}
         <div className="flex flex-1 flex-wrap items-center gap-3">
@@ -118,7 +130,7 @@ const Vechicles = () => {
             <option value="inactive">Amazing cars</option>
             <option value="pending">Toheeed cars limited</option>
           </select>
-       
+
         </div>
 
         {/* Right */}

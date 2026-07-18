@@ -11,10 +11,11 @@ import {
 import VechicleStatusChart from "../../components/dashboard/VechicleStatusChart";
 import RecentActivities from "../../components/dashboard/RecentActivities";
 import LatestVehiclesTable from "../../components/dashboard/LatestVehiclesTable";
+import PageLoader from "../../components/common/PageLoader";
 
 const AdminDashboard = () => {
   const user = getCurrentUser();
-
+  const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     cars: 0,
     users: 0,
@@ -52,13 +53,22 @@ const AdminDashboard = () => {
         setRecentCars(recentCarsData.cars); // Assuming the API response has a 'cars' property containing the recent cars
       } catch (error) {
         console.error(error);
+      } finally{
+        setLoading(false)
       }
     };
 
     fetchDashboard();
   }, []);
 
-
+  if (loading) {
+    return (
+      <PageLoader
+        title="Loading Dashboard"
+        description="Preparing your analytics..."
+      />
+    );
+  }
 
   return (
     <div>
