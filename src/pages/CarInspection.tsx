@@ -40,11 +40,11 @@ const CarInspection = () => {
               <div className="space-y-3">
 
                 <h1 className="text-xl sm:text-2xl font-semibold">
-                  {car.name}
+                  {car.brand}
                 </h1>
 
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
-                  ₦{car.pricing.buy}
+                  ₦{car?.pricing?.buy}
                 </h2>
 
                 {/* CAR SPECS */}

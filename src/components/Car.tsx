@@ -1,11 +1,11 @@
 import { MapPin, Star, Heart } from "lucide-react"
-import {  Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import type { CarItem } from "../data/carData"
 
 
 const Car = ({ car }: { car: CarItem }) => {
 
-  
+
     return (
         <Link to={`/car/${car._id}`}>
             <div className="bg-white border border-gray-100 rounded-2xl hover:shadow-lg transition">
@@ -14,11 +14,9 @@ const Car = ({ car }: { car: CarItem }) => {
 
                     {/* IMAGE */}
                     <img
-                        src={car.image}
-                        alt={car.name}
-                        className="w-full h-full object-cover"
+                        src={car.images?.[0]?.url || "https://placehold.co/600x400"}
+                        alt={car.brand}
                     />
-
                     {/* BADGES + WISHLIST */}
                     <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
 
@@ -50,7 +48,7 @@ const Car = ({ car }: { car: CarItem }) => {
                 <div className="px-4 py-3">
                     {/* TITLE */}
                     <h1 className="text-sm md:text-md lg:text-lg font-bold text-gray-800 font-heading">
-                        {car.name}
+                        {car.brand}
                     </h1>
 
                     {/* META INFO */}

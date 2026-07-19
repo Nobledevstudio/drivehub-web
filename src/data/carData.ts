@@ -67,5 +67,75 @@ export const carData: CarItem[] = [
   description:"Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips.",
   createdAt: "2026-07-18T12:00:00.000Z",
   updatedAt: "2026-07-18T12:00:00.000Z",
-}
+  },
+   {
+  _id: "2",
+  brand: "Toyota",
+  model: "Camry",
+  type:" Sedan",
+  location: "Lagos",
+  images: [
+    {
+      url: "https://res.cloudinary.com/drd6sy1dx/image/upload/v1784376841/drivehub/cars/q7ezjfxvh5lvy3onub5n.jpg",
+      public_id: "drivehub/cars/toyota-camry",
+    },
+  ],
+  pricing: {
+    rent: 45000,
+  },
+  rating: 4.5,
+  year: 2020,
+  fuel: "petrol",
+  transmission: "automatic",
+  seats: 5,
+  dealer: {
+    _id: "1",
+    name: "Ola Motors",
+  },
+  color: "black",
+  airConditioning: true,
+  listingType: "rent",
+  status: "available",
+  approvalStatus: "approved",
+  isHotDeal: false,
+  description:"Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips.",
+  createdAt: "2026-07-18T12:00:00.000Z",
+  updatedAt: "2026-07-18T12:00:00.000Z",
+  },
+   {
+  _id: "3",
+  brand: "Honda",
+  model: "Camry",
+  type:" Sedan",
+  location: "Lagos",
+  images: [
+    {
+      url: "https://res.cloudinary.com/drd6sy1dx/image/upload/v1784376213/drivehub/cars/pmz2kzlvp7dfg7b4dema.webp",
+      public_id: "drivehub/cars/toyota-camry",
+    },
+  ],
+  pricing: {
+    buy: 45000,
+  },
+  rating: 4.5,
+  year: 2020,
+  fuel: "petrol",
+  transmission: "automatic",
+  seats: 5,
+  dealer: {
+    _id: "1",
+    name: "Ola Motors",
+  },
+  color: "black",
+  airConditioning: true,
+  listingType: "rent",
+  status: "available",
+  approvalStatus: "approved",
+  isHotDeal: false,
+  description:"Well-maintained Toyota Camry with smooth automatic transmission, chilled AC, clean leather interior, fuel-efficient engine, and excellent comfort for city rides or business trips.",
+  createdAt: "2026-07-18T12:00:00.000Z",
+  updatedAt: "2026-07-18T12:00:00.000Z",
+  }
 ]
+
+

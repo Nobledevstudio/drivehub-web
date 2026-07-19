@@ -21,7 +21,7 @@ const CarDetails = () => {
     }
 
 
-    const isRent = !!car.pricing.rent;
+    const isRent = !!car?.pricing?.rent;
 
 
     return (
@@ -35,7 +35,7 @@ const CarDetails = () => {
                 <div className="space-y-6">
 
                     <h1 className="text-3xl font-bold">
-                        {car.name}
+                        {car.brand}
                     </h1>
 
                     <p className="text-gray-500">
@@ -44,7 +44,7 @@ const CarDetails = () => {
 
                     {/* Prices */}
                     {
-                        car.pricing.buy ? (
+                        car?.pricing?.buy ? (
                             <p className="text-2xl font-semibold text-amber-500">
                                 ₦{car.pricing?.buy?.toLocaleString()}
                             </p>
@@ -99,7 +99,7 @@ const CarDetails = () => {
                             <div>
                                 <p className="text-gray-500 text-xs">AC</p>
                                 <p className="font-medium">
-                                    {car.airconditioning ? "Yes" : "No"}
+                                    {car.airConditioning ? "Yes" : "No"}
                                 </p>
                             </div>
                         </div>

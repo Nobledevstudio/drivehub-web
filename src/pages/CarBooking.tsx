@@ -57,8 +57,8 @@ const CarBooking = () => {
                             {/* IMAGE */}
                             <div className="w-full sm:w-40 md:w-48 lg:w-52 aspect-16/10 shrink-0">
                                 <img
-                                    src={bookingCar.image}
-                                    alt=""
+                                    src={bookingCar.images?.[0].url || "https://placehold.co/600x400" }
+                                    alt={bookingCar.brand}
                                     className="w-full h-full object-cover rounded-xl"
                                 />
                             </div>
@@ -68,7 +68,7 @@ const CarBooking = () => {
 
                                 <div className="flex flex-col gap-1">
                                     <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold leading-tight">
-                                        {bookingCar.name}
+                                        {bookingCar.brand}
                                     </h2>
 
                                     <p className="text-sm text-gray-500">
@@ -106,7 +106,7 @@ const CarBooking = () => {
                         {/* PRICE */}
                         <div className="w-full lg:w-auto flex lg:block justify-start lg:justify-end">
 
-                            {bookingCar.pricing.buy ? (
+                            {bookingCar?.pricing?.buy ? (
                                 <h2 className="text-amber-500 text-2xl font-semibold whitespace-nowrap">
                                     ₦{bookingCar.pricing.buy.toLocaleString()}
                                 </h2>
@@ -232,7 +232,7 @@ const CarBooking = () => {
                                     <Car className="w-4 h-4" />
                                     <p>Vehicle</p>
                                 </div>
-                                <p className="font-semibold">{bookingCar.name}</p>
+                                <p className="font-semibold">{bookingCar.brand}</p>
                             </div>
 
                             <div className="flex justify-between">

@@ -1,8 +1,9 @@
 import { BadgeCheck, CarIcon, ChevronRight, CircleCheckBig, CircleX, Clock3, DownloadIcon, SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getCarsStats } from "../../services/adminServices";
+import { getAllCars, getCarsStats } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
 import PageLoader from "../../components/common/PageLoader";
+import VechiclesTables from "../../components/admin/VechiclesTables";
 
 interface CarsStats {
   totalCars: number,
@@ -24,17 +25,20 @@ const Vechicles = () => {
     soldCars: 0,
     rejectedCars: 0
   })
+  const [cars, setCars] = useState([])
 
   useEffect(() => {
     const fetchCarsStats = async (): Promise<void> => {
       try {
-        const [carsStatsData] = await Promise.all([
-          getCarsStats()
+        const [carsStatsData, carsData] = await Promise.all([
+          getCarsStats(),
+          getAllCars()
         ])
         setCarsStats(carsStatsData)
+        setCars(carsData)
       } catch (error) {
         console.error(error);
-      }finally{
+      } finally {
         setLoading(false)
       }
     }
@@ -142,8 +146,10 @@ const Vechicles = () => {
 
 
       <div>
-
+        <VechiclesTables cars={cars} />
       </div>
+
+
 
     </div>
   )

@@ -34,8 +34,8 @@ const ContactDealer = () => {
         {/* Car Image */}
         <div className="w-full lg:w-auto">
           <img
-            src={car.image}
-            alt={car.name}
+            src={car.images[0].url || "https://placehold.co/600x400"}
+            alt={car.brand}
             className="w-full lg:w-96 object-cover rounded-md"
           />
         </div>
@@ -44,17 +44,17 @@ const ContactDealer = () => {
         <div className="flex-1 w-full">
 
           <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-            {car.name}
+            {car.brand}
           </h2>
 
           {/* Price */}
-          {car.pricing.buy ? (
+          {car?.pricing?.buy ? (
             <p className="text-xl md:text-2xl font-semibold text-amber-500 mb-4">
               ₦{car.pricing.buy.toLocaleString()}
             </p>
           ) : (
             <p className="text-xl md:text-2xl font-semibold text-amber-500 mb-4">
-              ₦{car.pricing.rent?.toLocaleString()}
+              ₦{car?.pricing?.rent?.toLocaleString()}
               <span className="text-sm text-gray-500 ml-1">/ per day</span>
             </p>
           )}
@@ -200,7 +200,7 @@ const ContactDealer = () => {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:ring-2 focus:ring-amber-400 outline-none"
-                  placeholder={`I am interested in this ${car.name}...`}
+                  placeholder={`I am interested in this ${car.brand}...`}
                 />
 
                 <div className="absolute bottom-2 right-3 text-xs text-gray-500">

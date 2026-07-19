@@ -46,8 +46,8 @@ const CarImageGallery = ({ car }: CarImageGalleryProps) => {
         {/* Main Image */}
         <img
           className="w-full h-full object-cover"
-          src={car.image}
-          alt="Main car"
+          src={car.images?.[0].url ||  "https://placehold.co/600x400"}
+          alt={car.brand}
         />
       </div>
 
@@ -57,7 +57,7 @@ const CarImageGallery = ({ car }: CarImageGalleryProps) => {
           <img
             key={i}
             className="w-full aspect-video object-cover rounded-md border border-gray-200 cursor-pointer hover:opacity-80 transition"
-            src={car.image}
+              src={car.images?.[0].url ||  "https://placehold.co/600x400"}
             alt={`Thumbnail ${i}`}
           />
         ))}
