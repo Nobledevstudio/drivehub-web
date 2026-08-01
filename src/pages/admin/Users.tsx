@@ -1,10 +1,11 @@
-import { ChevronRight, User2, PlusIcon, UsersIcon, ShoppingBagIcon, SearchIcon, DownloadIcon, Calendar, } from "lucide-react"
+import { ChevronRight, User2, PlusIcon, UsersIcon, ShoppingBagIcon, SearchIcon, DownloadIcon, Calendar } from "lucide-react"
 import { useEffect, useState } from "react"
 import { getUsers, getUsersStats } from "../../services/adminServices";
 import StatCard from "../../components/ui/StatCard";
 import DatePicker from "react-datepicker";
 import UsersTable from "../../components/admin/UsersTable";
 import PageLoader from "../../components/common/PageLoader";
+import { Link } from "react-router-dom";
 
 interface UserStats {
   totalUsers: number;
@@ -87,7 +88,9 @@ const Users = () => {
         <div className="flex items-center gap-3">
           {/* Breadcrumb */}
           <nav className="flex items-center text-sm text-gray-500">
-            <span>Dashboard</span>
+            <Link to="/admin/dashboard" className="hover:underline">
+              Dashboard
+            </Link>
             <ChevronRight className="mx-1 h-4 w-4" />
             <span className="font-medium text-gray-900">Users</span>
           </nav>
@@ -111,56 +114,74 @@ const Users = () => {
         <StatCard title="Admin Users" value={userStats.admins} icon={UsersIcon} />
       </div>
 
-
       {/* ------------------------ Filters ------------------------ */}
-      <div className="mt-6 flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm lg:flex-row lg:items-center lg:justify-between">
-        {/* Left */}
-        <div className="flex flex-1 flex-wrap items-center gap-3">
+      <div className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+
           {/* Search */}
-          <div className="relative min-w-62.5 flex-1">
-            <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <div className="relative w-full lg:flex-1">
+            <SearchIcon
+              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+            />
+
             <input
               type="text"
               placeholder="Search users..."
-              className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+              className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
 
-          {/* Role Filter */}
-          <select className="rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:border-amber-500">
-            <option value="">All Roles</option>
-            <option value="customer">Customers</option>
-            <option value="dealer">Dealers</option>
-            <option value="admin">Admins</option>
-          </select>
+          {/* Filters */}
+          <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:flex lg:w-auto lg:shrink-0">
 
-          {/* Status Filter */}
-          <select className="rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:border-amber-500">
-            <option value="">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-            <option value="pending">Pending</option>
-            <option value="banned">Banned</option>
-          </select>
-          <div className="relative">
-            <Calendar className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+            {/* Role */}
+            <select
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100 lg:w-36"
+            >
+              <option value="">All Roles</option>
+              <option value="customer">Customers</option>
+              <option value="dealer">Dealers</option>
+              <option value="admin">Admins</option>
+            </select>
 
-            <DatePicker
-              selected={joinedDate}
-              onChange={(date: Date | null) => setJoinedDate(date)}
-              placeholderText="Joined Date"
-              dateFormat="dd MMM yyyy"
-              isClearable
-              className="w-48 rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            />
+            {/* Status */}
+            <select
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100 lg:w-36"
+            >
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="pending">Pending</option>
+              <option value="banned">Banned</option>
+            </select>
+
+            {/* Joined Date */}
+            <div className="relative w-full sm:col-span-2 lg:w-48">
+              <Calendar
+                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
+              />
+
+              <DatePicker
+                selected={joinedDate}
+                onChange={(date: Date | null) => setJoinedDate(date)}
+                placeholderText="Joined Date"
+                dateFormat="dd MMM yyyy"
+                isClearable
+                className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+              />
+            </div>
           </div>
+
+          {/* Export */}
+          <button
+            type="button"
+            className="flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 sm:w-auto lg:w-auto"
+          >
+            <DownloadIcon className="h-4 w-4" />
+            Export
+          </button>
+
         </div>
-
-        {/* Right */}
-        <button className="flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100">
-          <DownloadIcon className="h-4 w-4" />
-          Export
-        </button>
       </div>
 
       <div>
