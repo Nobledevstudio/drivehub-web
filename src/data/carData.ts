@@ -26,6 +26,7 @@ export interface CarItem {
     _id: string;
     name: string;
     email?: string;
+    phone?: string;
   };
   status: "available" | "reserved" | "rented" | "sold";
   approvalStatus: "pending" | "approved" | "rejected";
