@@ -30,8 +30,8 @@ const AdminDashboard = () => {
     reserved: 0
   });
 
-   const [activities, setActivities] = useState([]);
-   const [recentCars, setRecentCars] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [recentCars, setRecentCars] = useState([]);
 
   useEffect(() => {
 
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
             getRecentActivties(),
             getRecentCars(),
           ]);
-          
+
         // console.log("Recent Vehicles:", recentCarsData);
 
         setStats(statsData);
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
         setRecentCars(recentCarsData.cars); // Assuming the API response has a 'cars' property containing the recent cars
       } catch (error) {
         console.error(error);
-      } finally{
+      } finally {
         setLoading(false)
       }
     };
@@ -83,11 +83,17 @@ const AdminDashboard = () => {
         <StatCard title="Total Purchases" value={stats.purchases} icon={ShoppingCart} />
       </div>
 
-      <div className="flex gap-2 mt-5">
-        <VechicleStatusChart vehicleStatus={vehicleStatus}/>
-        <RecentActivities  activities={activities}/>
+      <div className="mt-5 flex flex-col gap-5 md:flex-row">
+        <div className="w-full md:flex-2">
+          <VechicleStatusChart vehicleStatus={vehicleStatus} />
+        </div>
+
+        <div className="w-full md:flex-2">
+          <RecentActivities activities={activities} />
+        </div>
       </div>
-        <LatestVehiclesTable cars={recentCars} />
+
+      <LatestVehiclesTable cars={recentCars} />
     </div>
   );
 };
