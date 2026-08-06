@@ -37,8 +37,19 @@ export const getCarsStats = async () => {
   const response = await api.get("/admin/cars/stats");
   return response.data.data;
 };
+
 export const getAllCars = async () => {
   const response = await api.get("/admin/cars");
+  return response.data.data;
+};
+
+export const getBookingsStats = async () => {
+  const response = await api.get("/admin/bookings/stats");
+  return response.data.data;
+};
+
+export const getPurchasesStats = async () => {
+  const response = await api.get("/admin/purchases/stats");
   return response.data.data;
 };
 
