@@ -2,8 +2,9 @@ import { BadgeCheck, Car, ChevronRight, Clock3, DownloadIcon, SearchIcon, XCircl
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import PageLoader from "../../components/common/PageLoader"
-import { getBookingsStats } from "../../services/adminServices"
+import { getAdminBookings, getBookingsStats } from "../../services/adminServices"
 import StatCard from "../../components/ui/StatCard"
+import BookingsTable from "../../components/admin/BookingsTable"
 
 
 interface bookingStats {
@@ -16,6 +17,7 @@ interface bookingStats {
 const Rentals = () => {
 
   const [loading, setLoading] = useState(true)
+    const [bookings, setBookings] = useState([])
   const [bookingStats, setBookingStats] = useState<bookingStats>({
     completed: 0,
     approved: 0,
@@ -29,10 +31,12 @@ const Rentals = () => {
 
     const fetchBookingsData = async (): Promise<void> => {
       try {
-        const [BookingsStatsData] = await Promise.all([
-          getBookingsStats()
+        const [BookingsStatsData, BookingsData] = await Promise.all([
+          getBookingsStats(), 
+          getAdminBookings()
         ]);
         setBookingStats(BookingsStatsData)
+        setBookings(BookingsData)
         console.log(BookingsStatsData)
       } catch (error) {
         console.error(error);
@@ -144,6 +148,9 @@ const Rentals = () => {
         </div>
       </div>
 
+      <div>
+         <BookingsTable bookings={bookings}/>
+      </div>
 
     </div>
 
