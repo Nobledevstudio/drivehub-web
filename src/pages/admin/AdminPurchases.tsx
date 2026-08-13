@@ -2,8 +2,9 @@ import { BadgeCheck, CheckCircle2, ChevronRight, Clock3, DownloadIcon, SearchIco
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import PageLoader from "../../components/common/PageLoader"
-import { getPurchasesStats } from "../../services/adminServices"
+import { getAdminPurchases, getPurchasesStats } from "../../services/adminServices"
 import StatCard from "../../components/ui/StatCard"
+import PurchasesTable from "../../components/admin/PurchasesTable"
 
 
 
@@ -20,6 +21,7 @@ const AdminPurchases = () => {
 
 
   const [loading, setLoading] = useState(true)
+  const [purchases, setPurchases] = useState([])
   const [purchasesStats, setPurchasesStats] = useState<purchasesStats>({
     completed: 0,
     approved: 0,
@@ -31,11 +33,11 @@ const AdminPurchases = () => {
     const fetchPurchasesData = async (): Promise<void> => {
 
       try {
-        const [getPurchasesData] = await Promise.all([
-          getPurchasesStats()
+        const [getPurchasesStatsData, getPurchasesData] = await Promise.all([
+          getPurchasesStats(), getAdminPurchases()
         ])
-        setPurchasesStats(getPurchasesData)
-        console.log(getPurchasesData)
+        setPurchasesStats(getPurchasesStatsData)
+        setPurchases(getPurchasesData)
       } catch (error) {
         console.error(error)
       } finally {
@@ -94,7 +96,7 @@ const AdminPurchases = () => {
         <StatCard title="Cancelled Purchases" value={purchasesStats.cancelled} icon={XCircle} />
       </div>
 
-            <div className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+      <div className="mt-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
 
           {/* Search */}
@@ -124,7 +126,7 @@ const AdminPurchases = () => {
               <option value="banned">cancelled</option>
             </select>
 
-                    {/* Vehicle Type */}
+            {/* Vehicle Type */}
             <select
               className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100 lg:w-36"
             >
@@ -146,6 +148,11 @@ const AdminPurchases = () => {
           </button>
 
         </div>
+      </div>
+
+
+      <div>
+         <PurchasesTable purchases={purchases}/>
       </div>
     </div>
   )
