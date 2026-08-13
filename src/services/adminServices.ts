@@ -52,4 +52,12 @@ export const getPurchasesStats = async () => {
   const response = await api.get("/admin/purchases/stats");
   return response.data.data;
 };
+export const getAdminBookings = async () => {
+  const response = await api.get("/admin/bookings");
+  return response.data.data;
+};
+export const getAdminPurchases = async () => {
+  const response = await api.get("/admin/purchases");
+  return response.data.purchases;
+};
 
