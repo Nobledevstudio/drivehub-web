@@ -28,15 +28,20 @@ import Settings from "./pages/admin/Settings";
 import Payments from "./pages/admin/Payments";
 import MyVechicles from "./pages/dealer/MyVechicles";
 import Bookings from "./pages/dealer/Bookings";
-import Earnings from "./pages/dealer/Earnings";
-import DealerSettings from "./pages/dealer/DealerSettings";
 import Wishlist from "./pages/customer/Wishlist";
-import MyRentals from "./pages/customer/MyRentals";
-import Profile from "./pages/customer/Profile";
-import Purchases from "./pages/customer/Purchases";
 import Rentals from "./pages/admin/Rentals";
 import AdminPurchases from "./pages/admin/AdminPurchases";
 import InspectionRequest from "./pages/admin/InspectionRequest";
+import DealerPurchases from "./pages/dealer/DealerPurchases";
+import DealerPayments from "./pages/dealer/DealerPayments";
+import DealerInspections from "./pages/dealer/DealerInspections";
+import DealerProfile from "./pages/dealer/DealerProfile";
+import BrowseCars from "./pages/customer/BrowseCars";
+import CustomerProfile from "./pages/customer/CustomerProfile";
+import CustomerPurchases from "./pages/customer/CustomerPurchases";
+import CustomerRentals from "./pages/customer/CustomerRentals";
+import CustomerPayments from "./pages/customer/CustomerPayments";
+import CustomerInspections from "./pages/customer/CustomerInspections";
 
 
 
@@ -95,10 +100,12 @@ const App = () => {
           }
         >
           <Route path="dashboard" element={<DealerDashboard />} />
-          <Route path="my-vehicles" element={<MyVechicles />} />
+          <Route path="vehicles" element={<MyVechicles />} />
           <Route path="bookings" element={<Bookings />} />
-          <Route path="earnings" element={<Earnings />} />
-          <Route path="settings" element={<DealerSettings />} />
+          <Route path="purchases" element={<DealerPurchases />} />
+          <Route path="payments" element={<DealerPayments />} />
+          <Route path="inspections" element={<DealerInspections />} />
+          <Route path="profile" element={<DealerProfile />} />
         </Route>
 
         {/* CUSTOMER */}
@@ -111,10 +118,14 @@ const App = () => {
           }
         >
           <Route path="dashboard" element={<CustomerDashboard />} />
+        
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="rentals" element={<MyRentals />} />
-          <Route path="purchases" element={<Purchases />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="vehicles" element={<BrowseCars />} />
+          <Route path="rentals" element={<CustomerRentals />} />
+          <Route path="purchases" element={<CustomerPurchases />} />
+          <Route path="payments" element={<CustomerPayments />} />
+          <Route path="inspections" element={<CustomerInspections />} />
+          <Route path="profile" element={<CustomerProfile />} />
         </Route>
 
         <Route path="/pending-approval" element={<PendingApproval />} ></Route>
