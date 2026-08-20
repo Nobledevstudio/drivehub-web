@@ -11,12 +11,7 @@ interface SidebarProps {
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const user = getCurrentUser();
 
-    const menu =
-        user?.role === "admin"
-            ? adminMenu
-            : user?.role === "customer"
-              ? customerMenu
-              : dealerMenu;
+    const menu =  user?.role === "admin" ? adminMenu  : user?.role === "customer"   ? customerMenu : dealerMenu;
 
     return (
         <>
