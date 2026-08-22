@@ -1,9 +1,8 @@
 
-
-const MyRentals = () => {
+const CustomerRentals = () => {
   return (
-    <div>MyRentals</div>
+    <div>CustomerRentals</div>
   )
 }
 
-export default MyRentals
+export default CustomerRentals
