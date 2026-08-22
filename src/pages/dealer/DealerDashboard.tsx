@@ -5,7 +5,8 @@ const DealerDashboard = () => {
 
   return (
     <div>
-      <h1>Welcome {user?.name}</h1>
+      <h1 className="text-3xl font-bold"> Welcome back, {user?.name} 👋 </h1>
+      <p className="mt-2 text-gray-500">  Here's what's happening on DriveHub today. </p>
     </div>
   );
 };
